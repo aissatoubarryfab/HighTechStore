@@ -1,14 +1,28 @@
 
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
-      </ul>
-  </nav>
+  <nav class = "navbar" style="background-color: #e3f2fd;">
+        <div class="nav">
+                <a href=""><img class= "brand-logo"  src= "./assets/logo.png" alt></a>   
+          <div class = "nav-items" >
+            <div class="searchbar " style= "margin-left: 500px; margin-top: -1px;" >
+              <input class = "search-box" placeholder="Rechercher">
+              <button class="search-btn"> Rechercher </button>
+            </div>
+            <a href="/profil"><img src="./assets/user.png"></a>
+            <a href="/cart"><img src="./assets/cart.png">
+            <!-- <div style="font-size: 15px;" class="badge bg-danger">{{totalItem}}</div>  --></a>
+          </div>
+        </div>
+        <ul class="links-container">
+          <li class= "link-item"><a class= "link" href= ""> ACCUEIL</a></li>
+          <li class= "link-item" ><select id="monselect">
+            <option value="">Ordinateurs</option>
+            <option value="valeur1">Valeur 1</option>
+            <option value="valeur2" selected>Valeur 2</option>
+            <option value="valeur3">Valeur 3</option>
+          </select></li>
+          
+         <a class= "link" href= "/produits"> OFFRES</a>
+          <li class= "link-item"><a class= "link" href= "cours"> AIDES AUX DEVOIRS</a></li>
+          <li class= "link-item"><a class= "link" href= "/forum"> FORUM</a></li>
+        </ul>
+      </nav>

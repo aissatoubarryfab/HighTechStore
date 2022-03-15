@@ -12,17 +12,14 @@
             <!-- <div style="font-size: 15px;" class="badge bg-danger">{{totalItem}}</div>  --></a>
           </div>
         </div>
-        <ul class="links-container">
-          <li class= "link-item"><a class= "link" href= ""> ACCUEIL</a></li>
-          <li class= "link-item" ><select id="monselect">
-            <option value="">Ordinateurs</option>
-            <option value="valeur1">Valeur 1</option>
-            <option value="valeur2" selected>Valeur 2</option>
-            <option value="valeur3">Valeur 3</option>
-          </select></li>
-          
-         <a class= "link" href= "/produits"> OFFRES</a>
-          <li class= "link-item"><a class= "link" href= "cours"> AIDES AUX DEVOIRS</a></li>
-          <li class= "link-item"><a class= "link" href= "/forum"> FORUM</a></li>
-        </ul>
-      </nav>
+<ul class="links-container">
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle"  data-toggle="dropdown" href="#">Ordinateurs</a>
+    <div class="dropdown-menu">
+      <a class="dropdown-item" href="#">PC Portable</a>
+      <a class="dropdown-item" href="#">PC de bureau</a>
+      <a class="dropdown-item" href="#">Accessoires</a>
+    </div>
+  </li>
+</ul>  
+</nav>

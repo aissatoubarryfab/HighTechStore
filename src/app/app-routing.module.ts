@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import { PcPortableComponent } from './pc-portable/pc-portable.component';
 import { PcBureauComponent } from './pc-bureau/pc-bureau.component';
 import { PcAccessoiresComponent } from './pc-accessoires/pc-accessoires.component';

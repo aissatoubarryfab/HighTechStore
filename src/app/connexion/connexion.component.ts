@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-connexion',
@@ -7,13 +8,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./connexion.component.css']
 })
 export class ConnexionComponent implements OnInit {
-
+messageError : string ='';
   constructor(
-    //private sa : AuthService, 
+    private sa : AuthService, 
     private root : Router
   ) {}
 
   ngOnInit(): void {
+    //let data = ConnexionForm.value
   }
 
 }

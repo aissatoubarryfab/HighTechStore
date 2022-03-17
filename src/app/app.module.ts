@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { PhonesModule } from './modules/phones/phones.module';
 import { OrdinateurModule } from './modules/ordinateur/ordinateur.module';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { OrdinateurModule } from './modules/ordinateur/ordinateur.module';
     PhonesModule,
     OrdinateurModule
   ],
-  providers: [],
+  providers: [ AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

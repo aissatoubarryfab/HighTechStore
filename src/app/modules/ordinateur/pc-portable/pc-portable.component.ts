@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from 'src/app/Article';
+import { ArticleService } from 'src/app/article.service';
+import { CategoryEnum } from 'src/app/enum/category.enum';
 
 @Component({
   selector: 'app-pc-portable',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PcPortableComponent implements OnInit {
 
-  constructor() { }
+  articles : Array<Article> =[]
+  constructor(
+    private pcPortableService: ArticleService
+  ) { }
 
   ngOnInit(): void {
+    this.pcPortableService.getAllArticleByCategory(CategoryEnum.PC_PORTABLE).subscribe(res => {
+      this.articles  = res;
+    });
   }
 
 }

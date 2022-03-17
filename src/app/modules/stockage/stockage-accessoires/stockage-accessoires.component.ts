@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Article } from 'src/app/Article';
+import { ArticleService } from 'src/app/article.service';
+import { CategoryEnum } from 'src/app/enum/category.enum';
 
 @Component({
   selector: 'app-stockage-accessoires',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StockageAccessoiresComponent implements OnInit {
 
-  constructor() { }
+ 
+  articles : Array<Article> =[]
+  constructor(
+    private stockageAccessoires: ArticleService
+  ) { }
 
   ngOnInit(): void {
+    this.stockageAccessoires.getAllArticleByCategory(CategoryEnum.STOCKAGE_ACCESSOIRES)
+     .subscribe(res => {
+      this.articles  = res;
+    });
   }
 
 }

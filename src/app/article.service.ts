@@ -28,5 +28,8 @@ export class ArticleService {
   updateArticle(ArticleToUpdate:number):Observable<Article>{
       return this.http.post<Article>("http://localhost:8080/Article",ArticleToUpdate);
   }
+  getAllArticleByCategory(idCategorie:number) : Observable<Article[]>{
+    return this.http.post<Article[]>("http://localhost:8080/product/searchByCategory",idCategorie);
+  }
 
 }

@@ -3,6 +3,8 @@ export class Article{
     id!: number;
     label!: string;
 	image!: string;
+    photo! : string;
+    prix !: number;
     description!: string;
     marque!: string;
     //idUser! : number;

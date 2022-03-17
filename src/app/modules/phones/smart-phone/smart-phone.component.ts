@@ -39,5 +39,6 @@ export class SmartPhoneComponent implements OnInit {
       this.totalProductInCart();
 
     });
+  }
 
 }

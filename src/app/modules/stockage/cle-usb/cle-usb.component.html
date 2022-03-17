@@ -1,1 +1,12 @@
-<p>cle-usb works!</p>
+<div class="row">
+    <ng-container *ngFor="let item of articles">
+        <div class="card col-md-3">
+            <img src="{{item.photo}}" alt="">
+            <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.label}}</h5>
+            <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
+            <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"><strong>Prix: </strong>{{item.price}}€</p>
+          <button class="btn btn-primary" (click)="addtocart(item)">Ajouter au panier</button>
+        </div>
+    </ng-container>
+</div>
+

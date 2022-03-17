@@ -4,10 +4,10 @@ export class Article{
     label!: string;
 	image!: string;
     photo! : string;
-    prix !: number;
+    price!: number;
     description!: string;
     marque!: string;
-    //idUser! : number;
+    idUser! : number;
     idCategorie! : number;
 
 }

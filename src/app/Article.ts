@@ -2,8 +2,7 @@ export class Article{
     //ces variables auront une valeur à l'exécution
     id!: number;
     label!: string;
-	image!: string;
-    photo! : string;
+	photo!: string;
     price!: number;
     description!: string;
     marque!: string;

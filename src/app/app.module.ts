@@ -11,6 +11,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PhonesModule } from './modules/phones/phones.module';
 import { OrdinateurModule } from './modules/ordinateur/ordinateur.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { DetailsArticleComponent } from './modules/datails-article/details_article.component';
+
+
+
+
+
 
 @NgModule({
   declarations: [
@@ -21,8 +28,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ConnexionComponent,
     HomeComponent,
     NavbarComponent,
-    
-
+    DetailsArticleComponent,  
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PhonesModule,
     OrdinateurModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialog,
+    MatDialogRef,
+    MatDialogModule,
   ],
   providers: [ ],
   bootstrap: [AppComponent]

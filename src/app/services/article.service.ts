@@ -16,9 +16,6 @@ export class ArticleService {
   getArticleById(idArticle: number):Observable<Article>{
       return this.http.get<Article>(`http://localhost:8080/Article/${idArticle}`);
   }
-  RemoveArticle(idArticle:number):Observable<void>{
-    return this.http.delete<void>(`http://localhost:8080/Article/delete/${idArticle}`);
-  }
   addArticle(newAricle:Article):Observable<Article>{
     return this.http.post<Article>("http://localhost:8080/Article/create",newAricle);
   }

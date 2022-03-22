@@ -1,9 +1,4 @@
-.brand-logo {
-    height: 60px;
-    margin-left: 10px;
-    float: left;
-}
-li {
-	margin: 0 auto;
-    display: table;
+#logo{
+    height: 100px;
+    width: auto;
 }

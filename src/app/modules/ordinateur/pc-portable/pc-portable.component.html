@@ -6,6 +6,8 @@
             <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
             <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"><strong>Prix: </strong>{{item.price}}€</p>
           <button class="btn btn-primary" (click)="addtocart(item)">Ajouter au panier</button>
+          <button class="btn btn-primary" (click)="openDetails(item.id)">Details</button>
         </div>
+
     </ng-container>
 </div>

@@ -4,6 +4,9 @@ import { ArticleService } from 'src/app/services/article.service';
 import { Cart } from 'src/app/Cart';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryEnum } from 'src/app/enum/category.enum';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { DetailsArticleComponent } from '../../datails-article/details_article.component';
 
 @Component({
   selector: 'app-pc-bureau',
@@ -17,6 +20,8 @@ export class PcBureauComponent implements OnInit {
   constructor(
     private pcBureauService: ArticleService,
     private cartService :CartService,
+    public dialog: MatDialog,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -39,4 +44,15 @@ export class PcBureauComponent implements OnInit {
 
     });
   }
+  openDetails(idArticle : number) {
+
+    let dialogRef = this.dialog.open(DetailsArticleComponent, {
+      width: '250px',
+      data: { name: idArticle }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.router.navigate([this.router.url]);
+    });
+  }
+  
 }

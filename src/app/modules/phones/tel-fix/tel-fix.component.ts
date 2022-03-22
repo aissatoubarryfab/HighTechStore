@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from 'src/app/Article';
-import { ArticleService } from 'src/app/article.service';
+import { ArticleService } from 'src/app/services/article.service';
 import { Cart } from 'src/app/Cart';
-import { CartService } from 'src/app/cart.service';
+import { CartService } from 'src/app/services/cart.service';
 import { CategoryEnum } from 'src/app/enum/category.enum';
 
 @Component({
@@ -16,8 +16,9 @@ export class TelFixComponent implements OnInit {
   articleSelected: boolean =false;
   totalItem! : number ;
   constructor(
-    private telFixService: ArticleService,
-    private cartService :CartService
+    private cartService :CartService,
+    private telFixService: ArticleService
+    
   ) { }
 
   ngOnInit(): void {

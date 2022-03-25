@@ -6,11 +6,11 @@ import { TelFixComponent } from './tel-fix/tel-fix.component';
 
  //utilisation de Eager leading
  const routes: Routes = [
-  { path :"Phone", children:[
-  { path: 'SmartPhone', component: SmartPhoneComponent },
-  { path: 'TelFix', component: TelFixComponent  },
-  { path: 'TelAccessoires', component: TelAccessoiresComponent },
-]}
+//   { path :"Phone", children:[
+//   { path: 'SmartPhone', component: SmartPhoneComponent },
+//   { path: 'TelFix', component: TelFixComponent  },
+//   { path: 'TelAccessoires', component: TelAccessoiresComponent },
+// ]}
 
 ];
 @NgModule({

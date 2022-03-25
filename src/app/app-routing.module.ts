@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule } from '@angular/router';
 
+import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ConnexionComponent } from './auth/login/connexion.component';
 
@@ -16,9 +16,10 @@ import { TelAccessoiresComponent } from './modules/phones/tel-accessoires/tel-ac
 import { CleUSBComponent } from './modules/stockage/cle-usb/cle-usb.component';
 import { DisqueDurComponent } from './modules/stockage/disque-dur/disque-dur.component';
 import { StockageAccessoiresComponent } from './modules/stockage/stockage-accessoires/stockage-accessoires.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
-  { path: 'Home', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'Connexion', component: ConnexionComponent },
 
   { path: 'PcPortable', component: PcPortableComponent },
@@ -37,8 +38,15 @@ const routes: Routes = [
   
 @NgModule({
   declarations: [],
+    exports: [
+      RouterModule
+    ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forRoot(routes),
+    HttpClientModule,
+   // RouterModule.forChild(routes)
+
   ]
 })
 export class AppRoutingModule { }

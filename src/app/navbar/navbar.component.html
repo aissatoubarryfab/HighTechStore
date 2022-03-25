@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
   
-  <img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" id="logo" alt=""> 
+  <img src="assets/logo.png" width="30" height="10" class="d-inline-block align-top" id="logo" alt=""> 
   
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="nav navbar-nav flex-fill justify-content-center">
 
       <li class="nav-item active"> 
-        <a class="nav-link" href="/Home">Accueil<span class="sr-only"></span></a>
+        <a class="nav-link" href="">Accueil<span class="sr-only"></span></a>
       </li>
 
       <li class="nav-item dropdown">
@@ -15,7 +15,7 @@
           Ordinateurs
         </a>
         <div class="dropdown-menu" aria-labbeldby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/PcPortable">PC Portable</a>
+          <a [routerLink] = "['/PcPortable']" class="dropdown-item">PC Portable</a>
           <a class="dropdown-item" href="/PcBureau">PC Bureau</a>
           <hr class="dropdown-divider">
           <a class="dropdown-item" href="/PcAccessoires">Accessoires</a>
@@ -27,7 +27,7 @@
           Téléphonies
         </a>
         <div class="dropdown-menu" aria-labbeldby="navbarDropdown">
-          <li><a class="dropdown-item" href="/Smat">Smatphone</a></li>
+          <li><a class="dropdown-item" href="/Smart">Smatphone</a></li>
           <li><a class="dropdown-item" href="/Fixe">Tel fixe</a></li>
           <hr class="dropdown-divider">
           <li><a class="dropdown-item" href="/PhoneAccessoires">Accessoires</a></li>
@@ -47,11 +47,14 @@
       </li>
     </ul>
   </div>
-
-  <form class="form-inline justify-content-between">
+ 
+  <form class="searchbar " style= "margin-left: 500px; margin-top: -1px;">
     <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">OK</button>
   </form>
+  <div>
+  <button class="search-btn" type="submit">OK</button>
+</div>
+<a href="/Connexion"><img src="./assets/user.png" aria-placeholder="Connexion" ></a>
 </nav>
 
 <!--

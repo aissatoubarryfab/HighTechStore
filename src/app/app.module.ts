@@ -11,12 +11,35 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { PhonesModule } from './modules/phones/phones.module';
 import { OrdinateurModule } from './modules/ordinateur/ordinateur.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { DetailsArticleComponent } from './modules/datails-article/details_article.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { SmartPhoneComponent } from './modules/phones/smart-phone/smart-phone.component';
+import { TelFixComponent } from './modules/phones/tel-fix/tel-fix.component';
+import { TelAccessoiresComponent } from './modules/phones/tel-accessoires/tel-accessoires.component';
+import { CleUSBComponent } from './modules/stockage/cle-usb/cle-usb.component';
+import { RouterModule, Routes } from '@angular/router';
+import { DisqueDurComponent } from './modules/stockage/disque-dur/disque-dur.component';
+import { StockageAccessoiresComponent } from './modules/stockage/stockage-accessoires/stockage-accessoires.component';
+import { HttpClientModule } from '@angular/common/http';
 
+// const routes: Routes = [
+//   { path: 'home', component: HomeComponent },
+//   { path: 'Connexion', component: ConnexionComponent },
 
+//   { path: 'PcPortable', component: PcPortableComponent },
+//   { path: 'PcBureau', component: PcBureauComponent },
+//   { path: 'PcAccessoires', component: PcAccessoiresComponent },
 
+//   { path: 'Smart', component: SmartPhoneComponent },
+//   { path: 'Fixe', component: TelFixComponent },
+//   { path: 'PhoneAccessoires', component: TelAccessoiresComponent },
 
+//   { path: 'CleUSB', component: CleUSBComponent },
+//   { path: 'DisqueDur', component: DisqueDurComponent },
+//   { path: 'StockageAccesoires', component: StockageAccessoiresComponent },
+
+// ];
 
 
 @NgModule({
@@ -37,11 +60,14 @@ import { DetailsArticleComponent } from './modules/datails-article/details_artic
     OrdinateurModule,
     FormsModule,
     ReactiveFormsModule,
-    MatDialog,
-    MatDialogRef,
+    RouterModule,
+    HttpClientModule,
     MatDialogModule,
-  ],
-  providers: [ ],
+    ],
+  providers: [ 
+    MatDialog,
+    // MatDialogRef,
+    BrowserAnimationsModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

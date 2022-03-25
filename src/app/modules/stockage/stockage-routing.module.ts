@@ -6,9 +6,9 @@ import { StockageAccessoiresComponent } from './stockage-accessoires/stockage-ac
 
 //utilisation de  Lazy loading
 const routes: Routes = [
-  { path: 'CleUsb', component: CleUSBComponent},
-  { path: 'DisqueDur', component: DisqueDurComponent  },
-  { path: 'StockageAccessoires', component: StockageAccessoiresComponent },
+  // { path: 'CleUsb', component: CleUSBComponent},
+  // { path: 'DisqueDur', component: DisqueDurComponent  },
+  // { path: 'StockageAccessoires', component: StockageAccessoiresComponent },
 ];
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -49,11 +49,11 @@ export class PcAccessoiresComponent implements OnInit {
     let dialogRef = this.dialog.open(DetailsArticleComponent, {
       width: '250px',
       data: { name: idArticle }
-    });
+            });
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate([this.router.url]);
     });
-}
+  }
   
 
 }

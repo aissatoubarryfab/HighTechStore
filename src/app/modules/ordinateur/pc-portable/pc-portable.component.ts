@@ -22,10 +22,11 @@ export class PcPortableComponent implements OnInit {
     private pcPortableService: ArticleService,
     private cartService :CartService,
     public dialog: MatDialog,
-    private router: Router,
+    protected router: Router,
   ) { }
 
   ngOnInit(): void {
+    
     this.pcPortableService.getAllArticleByCategory(CategoryEnum.PC_PORTABLE).subscribe(res => {
       this.articles  = res;
     });

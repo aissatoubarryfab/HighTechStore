@@ -20,7 +20,7 @@ export class DetailsArticleComponent implements OnInit
     isLoading: boolean = true;
     constructor(
         private artcileService : ArticleService,
-        public dialogRef: MatDialogRef<DetailsArticleComponent>,
+        // public dialogRef: MatDialogRef<DetailsArticleComponent>,
         @Inject(MAT_DIALOG_DATA) public idArticle: number
     ) { }
 
@@ -52,7 +52,7 @@ export class DetailsArticleComponent implements OnInit
 
     onClose()
     {
-         this.dialogRef.close();
+         //this.dialogRef.close();
     }
 
 }

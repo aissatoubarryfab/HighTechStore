@@ -5,11 +5,11 @@ import { PcBureauComponent } from './pc-bureau/pc-bureau.component';
 import { PcPortableComponent } from './pc-portable/pc-portable.component';
  //utilisation de Eager leading
 const routes: Routes = [
-    { path :"Ordinateurs", children:[
-    { path: 'PcPortable', component: PcPortableComponent },
-    { path: 'PcBureau', component: PcBureauComponent },
-    { path: 'PcAccessoires', component: PcAccessoiresComponent },
-  ]}
+  //   { path :"Ordinateurs", children:[
+  //   { path: 'PcPortable', component: PcPortableComponent },
+  //   { path: 'PcBureau', component: PcBureauComponent },
+  //   { path: 'PcAccessoires', component: PcAccessoiresComponent },
+  // ]}
 
 ];
 

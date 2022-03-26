@@ -1,4 +1,4 @@
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img class="d-block w-100" src="assets/images/home/img1.png" alt="First slide">
@@ -18,4 +18,70 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only"></span>
     </a>
-  </div>
+  </div> -->
+<!DOCTYPE html>
+<html>
+
+<body>
+  <style>
+    *{box-sizing: border-box}
+
+    body{margin:0;overflow:hidden}
+
+    @keyframes animation_slide {
+
+    0% {transform:translatex(0)}
+    20%{transform:translatex(0)}
+
+    25%{transform:translatex(-20%)}
+    45%{transform:translatex(-20%)}
+
+    50%{transform:translatex(-40%)}
+    70%{transform:translatex(-40%)}
+
+    75%{transform:translatex(-60%)}
+    95%{transform:translatex(-60%)}
+
+    100%{transform:translatex(-80%)}
+
+      }
+
+    figure img{
+
+    pointer-events:none;
+    height:100vh;
+    object-fit:contain;
+    float:left;
+    width:20%
+
+      }
+
+
+    figure{
+    position:relative;
+    width:500%;
+    margin:0;
+    animation:15s animation_slide infinite;
+
+    }
+    @media (min-width:62.75rem){
+
+    figure img{
+
+      object-fit:cover
+
+      }
+
+      }
+    </style>
+    <figure>
+      <img src= "./assets/images/home/img1.png" alt>
+      <img src= "./assets/images/home/img2.png" alt>
+      <img src= "./assets/images/home/img3.jpg" alt>
+     <img src= "./assets/images/home/img4.jpg" alt> 
+    </figure>
+  </body>
+
+</html>
+
+

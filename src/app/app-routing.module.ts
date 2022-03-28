@@ -17,9 +17,12 @@ import { CleUSBComponent } from './modules/stockage/cle-usb/cle-usb.component';
 import { DisqueDurComponent } from './modules/stockage/disque-dur/disque-dur.component';
 import { StockageAccessoiresComponent } from './modules/stockage/stockage-accessoires/stockage-accessoires.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthGuard } from './auth.guard.';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', 
+    component: HomeComponent,
+    canActivate: [AuthGuard] },
   { path: 'Connexion', component: ConnexionComponent },
 
   { path: 'PcPortable', component: PcPortableComponent },

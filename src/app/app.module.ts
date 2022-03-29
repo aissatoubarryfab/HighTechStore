@@ -26,6 +26,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { FooterComponent } from './footer/footer.component';
 
 // const routes: Routes = [
 //   { path: 'home', component: HomeComponent },
@@ -56,6 +57,7 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     NavbarComponent,
     DetailsArticleComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

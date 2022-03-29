@@ -16,7 +16,7 @@
 <div class="row" style="width: 90%;">
   <ng-container *ngFor="let item of pcAccess">
       <div class="card col-md-3" style="align-content: center;">
-          <img class= img src="./assets/images/home/img3.jpg" alt="">
+          <img class= img src="{{item.imag}}" alt="">
           <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.label}}</h5>
           <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.description}}</p>
           <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;"><strong>Prix: </strong>{{item.prix}}</p>

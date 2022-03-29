@@ -22,33 +22,34 @@ export class SmartPhoneComponent implements OnInit {
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/Smart1.jpeg',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/smart2.webp',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/SMART3.webp',
        prix: '20 €'
     },
     {
-    label: 'Souris',
-    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-     prix: '20 €'
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/smart4.webp',
+       prix: '20 €'
   },
   {
-  label: 'Souris',
-  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-   prix: '20 €'
+    label: 'Souris',
+    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+    imag:'./assets/images/home/smart5.webp',
+     prix: '20 €'
 },
-{
-label: 'Souris',
-description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
- prix: '20 €'
-},
+
   ];
 
   constructor(

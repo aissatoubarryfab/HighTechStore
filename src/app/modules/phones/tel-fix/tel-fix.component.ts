@@ -23,32 +23,38 @@ export class TelFixComponent implements OnInit {
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/fix1.jpg',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/fix2.jpg',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/fix3.jpg',
        prix: '20 €'
     },
     {
-    label: 'Souris',
-    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-     prix: '20 €'
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/fix4.jpg',
+       prix: '20 €'
   },
   {
-  label: 'Souris',
-  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-   prix: '20 €'
+    label: 'Souris',
+    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+    imag:'./assets/images/home/fix5.jpg',
+     prix: '20 €'
 },
 {
-label: 'Souris',
-description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
- prix: '20 €'
+  label: 'Souris',
+  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+  imag:'./assets/images/home/fix6.webp',
+   prix: '20 €'
 },
   ];
 

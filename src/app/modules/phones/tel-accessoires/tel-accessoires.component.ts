@@ -18,6 +18,40 @@ export class TelAccessoiresComponent implements OnInit {
   articles : Array<Article> =[]
   articleSelected: boolean =false;
   totalItem! : number ;
+
+  TelAccess= [
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+    label: 'Souris',
+    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+     prix: '20 €'
+  },
+  {
+  label: 'Souris',
+  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+   prix: '20 €'
+},
+{
+label: 'Souris',
+description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+ prix: '20 €'
+},
+  ];
+
   constructor(
     private telAccessoiresService: ArticleService,
     private cartService :CartService,
@@ -38,14 +72,14 @@ export class TelAccessoiresComponent implements OnInit {
       console.log(this.totalItem)
     })
   }
-  addtocart(article : Article){
+  /*addtocart(article : Article){
     let cart = new Cart(article.id,article.idUser);
     this.cartService.addtoCart(cart).subscribe(res=>{
       this.articleSelected =  res;
       this.totalProductInCart();
 
     });
-  }
+  }*/
   openDetails(idArticle : number) {
 
     let dialogRef = this.dialog.open(DetailsArticleComponent, {
@@ -57,4 +91,5 @@ export class TelAccessoiresComponent implements OnInit {
     });
   }
 
+  addtocart(){}
 }

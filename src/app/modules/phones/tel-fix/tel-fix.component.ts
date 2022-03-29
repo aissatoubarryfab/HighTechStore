@@ -18,6 +18,40 @@ export class TelFixComponent implements OnInit {
   articles : Array<Article> =[]
   articleSelected: boolean =false;
   totalItem! : number ;
+
+  TelFix= [
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+    label: 'Souris',
+    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+     prix: '20 €'
+  },
+  {
+  label: 'Souris',
+  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+   prix: '20 €'
+},
+{
+label: 'Souris',
+description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+ prix: '20 €'
+},
+  ];
+
   constructor(
     private cartService :CartService,
     private telFixService: ArticleService,
@@ -39,14 +73,14 @@ export class TelFixComponent implements OnInit {
       console.log(this.totalItem)
     })
   }
-  addtocart(article : Article){
+  /*addtocart(article : Article){
     let cart = new Cart(article.id,article.idUser);
     this.cartService.addtoCart(cart).subscribe(res=>{
       this.articleSelected =  res;
       this.totalProductInCart();
 
     });
-  }
+  }*/
   openDetails(idArticle : number) {
 
     let dialogRef = this.dialog.open(DetailsArticleComponent, {
@@ -57,5 +91,5 @@ export class TelFixComponent implements OnInit {
       this.router.navigate([this.router.url]);
     });
   }  
-
+  addtocart(){}
 }

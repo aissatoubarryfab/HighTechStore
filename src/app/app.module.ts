@@ -22,6 +22,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { DisqueDurComponent } from './modules/stockage/disque-dur/disque-dur.component';
 import { StockageAccessoiresComponent } from './modules/stockage/stockage-accessoires/stockage-accessoires.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatSelectModule} from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 
 // const routes: Routes = [
 //   { path: 'home', component: HomeComponent },
@@ -51,7 +55,7 @@ import { HttpClientModule } from '@angular/common/http';
     ConnexionComponent,
     HomeComponent,
     NavbarComponent,
-    DetailsArticleComponent,  
+    DetailsArticleComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +67,10 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule,
     HttpClientModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+    MatInputModule,
     ],
   providers: [ 
     MatDialog,

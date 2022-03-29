@@ -19,6 +19,41 @@ export class StockageAccessoiresComponent implements OnInit {
   articles : Array<Article> =[]
   articleSelected: boolean =false;
   totalItem! : number ;
+
+  StockAccess= [
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+    label: 'Souris',
+    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+     prix: '20 €'
+  },
+  {
+  label: 'Souris',
+  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+   prix: '20 €'
+},
+{
+label: 'Souris',
+description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+ prix: '20 €'
+},
+  ];
+
+
   constructor(
     private cartService :CartService,
     private stockageAccessoires: ArticleService,
@@ -39,14 +74,14 @@ export class StockageAccessoiresComponent implements OnInit {
       console.log(this.totalItem)
     })
   }
-  addtocart(article : Article){
+  /*addtocart(article : Article){
     let cart = new Cart(article.id,article.idUser);
     this.cartService.addtoCart(cart).subscribe(res=>{
       this.articleSelected =  res;
       this.totalProductInCart();
 
     });
-  }
+  }*/
 
   openDetails(idArticle : number) {
 
@@ -58,5 +93,6 @@ export class StockageAccessoiresComponent implements OnInit {
       this.router.navigate([this.router.url]);
     });
   }
+  addtocart(){}
 
 }

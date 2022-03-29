@@ -7,6 +7,7 @@ import { CategoryEnum } from 'src/app/enum/category.enum';
 import {  DetailsArticleComponent } from '../../datails-article/details_article.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field'; 
 
 @Component({
   selector: 'app-pc-accessoires',
@@ -17,6 +18,40 @@ export class PcAccessoiresComponent implements OnInit {
   articles : Array<Article> =[]
   articleSelected: boolean =false;
   totalItem! : number ;
+
+  pcAccess = [
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+       prix: '20 €'
+    },
+    {
+    label: 'Souris',
+    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+     prix: '20 €'
+  },
+  {
+  label: 'Souris',
+  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+   prix: '20 €'
+},
+{
+label: 'Souris',
+description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+ prix: '20 €'
+},
+  ];
+
   constructor(
     private pcAccessoiresService: ArticleService,
     private cartService :CartService,
@@ -36,14 +71,14 @@ export class PcAccessoiresComponent implements OnInit {
       console.log(this.totalItem)
     })
   }
-  addtocart(article : Article){
+  /*addtocart(article : Article){
     let cart = new Cart(article.id,article.idUser);
     this.cartService.addtoCart(cart).subscribe(res=>{
       this.articleSelected =  res;
       this.totalProductInCart();
 
     });
-  }
+  }*/
   openDetails(idArticle : number) {
 
     let dialogRef = this.dialog.open(DetailsArticleComponent, {
@@ -54,6 +89,14 @@ export class PcAccessoiresComponent implements OnInit {
       this.router.navigate([this.router.url]);
     });
   }
-  
 
+  newProduct(){
+
+  }
+
+  filterProductBy(){
+
+  }
+
+  addtocart(){}
 }

@@ -111,7 +111,7 @@ body {
 }
 
 .ads {
-  background-color: #CC0000;
+  background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   color: #fff;
@@ -124,11 +124,13 @@ body {
 }
 
 #fl {
-  font-weight: 600;
+  font-weight: 800;
+  color: rgb(14, 14, 14);
 }
 
 #sl {
-  font-weight: 100 !important;
+  font-weight: 200 !important;
+  color: rgb(14, 14, 14);
 }
 
 .profile-img {

@@ -23,33 +23,34 @@ export class PcPortableComponent implements OnInit {
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/ACER.avif',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/Acert.jpg',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/AZUS.webp',
        prix: '20 €'
     },
     {
-    label: 'Souris',
-    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-     prix: '20 €'
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/HP.webp',
+       prix: '20 €'
   },
   {
-  label: 'Souris',
-  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-   prix: '20 €'
+    label: 'Souris',
+    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+    imag:'./assets/images/home/Lenovo.webp',
+     prix: '20 €'
 },
-{
-label: 'Souris',
-description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
- prix: '20 €'
-},
+
   ];
 
   constructor(

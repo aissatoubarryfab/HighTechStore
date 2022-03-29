@@ -22,33 +22,28 @@ export class PcBureauComponent implements OnInit {
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/BurAp.webp',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/BurAs.jpg',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/BurLenov.avif',
        prix: '20 €'
     },
     {
-    label: 'Souris',
-    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-     prix: '20 €'
+      label: 'Souris',
+      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/Burappl.jpg',
+       prix: '20 €'
   },
-  {
-  label: 'Souris',
-  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-   prix: '20 €'
-},
-{
-label: 'Souris',
-description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
- prix: '20 €'
-},
+  
   ];
 
   constructor(

@@ -23,32 +23,32 @@ export class PcAccessoiresComponent implements OnInit {
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/PcAc1.png',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/PcAc2.jpg',
        prix: '20 €'
     },
     {
       label: 'Souris',
       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+      imag:'./assets/images/home/PcAc3.webp',
        prix: '20 €'
     },
     {
     label: 'Souris',
     description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+    imag:'./assets/images/home/PcAc4.jpg',
      prix: '20 €'
   },
   {
   label: 'Souris',
   description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+  imag:'./assets/images/home/PcAC5.jpg',
    prix: '20 €'
-},
-{
-label: 'Souris',
-description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
- prix: '20 €'
 },
   ];
 

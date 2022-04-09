@@ -1,0 +1,10 @@
+{
+    "*/ici_war/*": {
+        "target":"http://localhost:8080",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true,
+        "pathRewrite": {"^/ici_war" : "http://localhost:8080/ici_war"}
+    }
+    
+}

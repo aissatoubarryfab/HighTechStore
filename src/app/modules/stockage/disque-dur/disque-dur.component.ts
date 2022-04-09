@@ -15,7 +15,7 @@ import { DetailsArticleComponent } from '../../datails-article/details_article.c
 })
 export class DisqueDurComponent implements OnInit {
 
-  articles : Array<Article> =[]
+  articles :any =[]
   articleSelected: boolean =false;
   totalItem! : number ;
 

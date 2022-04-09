@@ -15,7 +15,7 @@ import { DetailsArticleComponent } from '../../datails-article/details_article.c
 })
 export class TelAccessoiresComponent implements OnInit {
 
-  articles : Array<Article> =[]
+  articles : any =[]
   articleSelected: boolean =false;
   totalItem! : number ;
 

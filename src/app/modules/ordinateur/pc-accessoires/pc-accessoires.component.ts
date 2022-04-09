@@ -15,7 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrls: ['./pc-accessoires.component.css']
 })
 export class PcAccessoiresComponent implements OnInit {
-  articles : Array<Article> =[]
+  articles : any =[]
   articleSelected: boolean =false;
   totalItem! : number ;
 

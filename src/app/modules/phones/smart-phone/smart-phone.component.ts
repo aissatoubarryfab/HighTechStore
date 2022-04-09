@@ -14,7 +14,7 @@ import { DetailsArticleComponent } from '../../datails-article/details_article.c
   styleUrls: ['./smart-phone.component.css']
 })
 export class SmartPhoneComponent implements OnInit {
-  articles : Array<Article> =[]
+  articles : any =[]
   articleSelected: boolean =false;
   totalItem! : number ;
 

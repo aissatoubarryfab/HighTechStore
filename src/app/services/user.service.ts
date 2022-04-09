@@ -29,7 +29,7 @@ export class AuthenticationService {
     }
 
     login(username: string, password: string) {
-      return this.http.post<any>(`http://localhost:8080/users/authenticate`, { username, password })
+      return this.http.post<any>(`http://localhost:8080/ici_war/user/login`, { username, password })
         .pipe(map(user => {
             // stocker les détails de l'utilisateur et le jeton jwt dans le stockage local pour que l'utilisateur reste connecté entre les actualisations de la page
             localStorage.setItem('user', JSON.stringify(user));
@@ -45,10 +45,10 @@ export class AuthenticationService {
         this.router.navigate(['/login']);
     }
   getById(id: number) {
-    return this.http.get<User>(`http://localhost:8080/users/${id}`);
+    return this.http.get<User>(`http://localhost:8080/ici_war/${id}`);
   }
 
   getAll() {
-    return this.http.get<User[]>(`http://localhost:8080/users`);
+    return this.http.get<User[]>(`http://localhost:8080/ici_war/users`);
 }
 }

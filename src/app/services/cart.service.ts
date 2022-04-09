@@ -9,19 +9,19 @@ import { Cart } from '../Cart';
 export class CartService {
   constructor(private http:HttpClient) { }
   getProducts(idUser: number): Observable<Cart[]>{
-    return this.http.post<Cart[]>("http://localhost:8080/cart/list",idUser);
+    return this.http.post<Cart[]>("http://localhost:8080/ici_war/cart/list",idUser);
   }
   addtoCart(cart : Cart) :Observable<boolean>
   {
-    return this.http.post<boolean>("http://localhost:8080/cart/create",cart)
+    return this.http.post<boolean>("http://localhost:8080/ici_war/cart/create",cart)
   }
   getTotalPrice(idUser: number) :Observable<number>{
-    return this.http.post<number>("http://localhost:8080/cart/totalPrice",idUser);
+    return this.http.post<number>("http://localhost:8080/ici_war/cart/totalPrice",idUser);
   }
   removeCartItem(cart : Cart):Observable<boolean>{
-    return this.http.post<boolean>(`http://localhost:8080/cart/delete`,cart);
+    return this.http.post<boolean>(`http://localhost:8080/ici_war/cart/delete`,cart);
   }
   removeAllCart(idUser: number):Observable<boolean>{
-    return this.http.post<boolean>(`http://localhost:8080/cart/deleteAll`,idUser);
+    return this.http.post<boolean>(`http://localhost:8080/ici_war/cart/deleteAll`,idUser);
   }
 }

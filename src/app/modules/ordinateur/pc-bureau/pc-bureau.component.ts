@@ -14,7 +14,7 @@ import { DetailsArticleComponent } from '../../datails-article/details_article.c
   styleUrls: ['./pc-bureau.component.css']
 })
 export class PcBureauComponent implements OnInit {
-  articles : Array<Article> =[]
+  articles :any =[]
   articleSelected: boolean =false;
   totalItem! : number ;
 

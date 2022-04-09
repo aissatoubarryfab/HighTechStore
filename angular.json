@@ -73,6 +73,10 @@
             },
             "development": {
               "browserTarget": "HighTechStore:build:development"
+            },
+            "options" :{
+              "browserTarget": "HighTechStore:build:production",
+              "proxyConfig": "proxy.config.json"
             }
           },
           "defaultConfiguration": "development"

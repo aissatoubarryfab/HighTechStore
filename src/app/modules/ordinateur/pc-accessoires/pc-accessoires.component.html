@@ -14,12 +14,12 @@
 </div>-->
 <br><br>
 <div class="row" style="width: 90%;">
-  <ng-container *ngFor="let item of pcAccess">
+  <ng-container *ngFor="let item of articles.ApplicationConstant | keyvalue">
       <div class="card col-md-3" style="align-content: center;">
-          <img class= img src="{{item.imag}}" alt="">
-          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.label}}</h5>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.description}}</p>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;"><strong>Prix: </strong>{{item.prix}}</p>
+          <img class= img src="{{item.value}}" alt="">
+          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.value}}</h5>
+          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.value}}</p>
+          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;"><strong>Prix: </strong>{{item.value}}</p>
         
       <button class="btn" (click)="addtocart()">Ajouter au panier</button>
       <br>

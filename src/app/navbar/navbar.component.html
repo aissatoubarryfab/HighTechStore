@@ -54,61 +54,11 @@
   <div>
   <button class="search-btn" type="submit">OK</button>
 </div>
-<a href="/Connexion"><img  style= "width:50px; margin-right: 10%;"src="./assets/images/home/userIcon.jpg" ></a>
+<!-- <div  *ngIf="isConnected">
+   <a (click)="disconnect()"><img src="./assets/logout.png">Se deconnecter</a>            -->
+  <!-- <a href="/cart" ><img src="./assets/cart.png"></a> -->
+  <!-- <div style="font-size: 15px;" class="badge bg-danger">{{totalItem}}</div>  
+</div> -->
+<a *ngIf="!isConnected" href="/Connexion"><img  style= "width:50px; margin-right: 10%;"src="./assets/images/home/userIcon.jpg" ></a>
 </nav>
 <hr>
-<!--
-<div class="container-fluid">
-  <a class="nav-brand">
-    <img src="assets/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> 
-    HighTechStore
-  </a>
-  
-  <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
-
-  <li class="nav-item">
-    <a class="nav-link active" arria-current="page" routerLink="/Home">Home</a>
-  </li>
-
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Ordinateurs
-    </a>
-    <ul class="dropdown-menu" aria-labbeldby="navbarDropdown">
-      <li><a class="dropdown-item" routerLink="/PcPortable">PC Portable</a></li>
-      <li><a class="dropdown-item" routerLink="/PcBureau">PC Bureau</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" routerLink="/PcAccessoires">Accessoires</a></li>
-    </ul>
-  </li>
-
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Téléphonies
-    </a>
-    <ul class="dropdown-menu" aria-labbeldby="navbarDropdown">
-      <li><a class="dropdown-item" routerLink="/Smat">Smatphone</a></li>
-      <li><a class="dropdown-item" routerLink="/Fixe">Tel fixe</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" routerLink="/PhoneAccessoires">Accessoires</a></li>
-    </ul>
-  </li>
-
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Stockage
-    </a>
-    <ul class="dropdown-menu" aria-labbeldby="navbarDropdown">
-      <li><a class="dropdown-item" routerLink="/CleUSB">Disque dur</a></li>
-      <li><a class="dropdown-item" routerLink="/DisqueDur">Clé USB</a></li>
-      <li><hr class="dropdown-divider"></li>
-      <li><a class="dropdown-item" routerLink="/StockageAccesoires">Accessoires</a></li>
-    </ul>
-  </li>
-
-  <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  </form>
-
-</div>-->

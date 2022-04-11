@@ -18,8 +18,8 @@ export class ConnexionComponent implements OnInit {
   ngOnInit() {
   }
 
-  OnSubmit(userName : string,password : string ){
-     this.userService.login(userName,password).subscribe((data : any)=>{
+  OnSubmit(email : string,password : string ){
+     this.userService.login(email,password).subscribe((data : any)=>{
       localStorage.setItem('userToken',data.access_token);
       this.router.navigate(['/']);
     },

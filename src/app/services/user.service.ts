@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { User } from '../User';
+import { Role } from '../Role';
 
 @Injectable({ providedIn: 'root' })
 
@@ -24,12 +25,12 @@ export class AuthenticationService {
         this.user = this.userSubject.asObservable();
     }
 
-    public get userValue(): User |null {
+    public get CurrentUserValue(): User |null {
         return this.userSubject.value;
     }
 
-    login(username: string, password: string) {
-      return this.http.post<any>(`http://localhost:8080/ici_war/user/login`, { username, password })
+    login(email: string, password: string) {
+      return this.http.get<any>(`http://localhost:8080/ici_war/user/login/${email}/${password}`)
         .pipe(map(user => {
             // stocker les détails de l'utilisateur et le jeton jwt dans le stockage local pour que l'utilisateur reste connecté entre les actualisations de la page
             localStorage.setItem('user', JSON.stringify(user));
@@ -50,5 +51,12 @@ export class AuthenticationService {
 
   getAll() {
     return this.http.get<User[]>(`http://localhost:8080/ici_war/users`);
-}
+  }
+  get isConnected() :boolean{
+    return this.CurrentUserValue == undefined ? false : true ;
+  }  
+
+  isAdmin(){
+   return this.isConnected && this.CurrentUserValue?.role === Role.Admin ? true : false;
+  }
 }

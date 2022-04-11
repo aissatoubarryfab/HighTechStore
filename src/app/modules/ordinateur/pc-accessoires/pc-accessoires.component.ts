@@ -8,6 +8,7 @@ import {  DetailsArticleComponent } from '../../datails-article/details_article.
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pc-accessoires',
@@ -15,7 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrls: ['./pc-accessoires.component.css']
 })
 export class PcAccessoiresComponent implements OnInit {
-  articles : any =[]
+  articles :any
+  =[]
   articleSelected: boolean =false;
   totalItem! : number ;
 
@@ -60,10 +62,24 @@ export class PcAccessoiresComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).subscribe(res => {
-      this.articles  = res;
+    this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).pipe(map((response: any) =>
+    {console.log(response)
+      return this.parseXml(response);} )).subscribe(result => {
+      
+     this.articles= JSON.stringify(result, null, 4) as string;
+     console.log(this.articles)
     });
   }
+  generateArray(obj : any){
+    return Object.keys(obj).map((key)=>{ return obj[key]});
+ }
+  parseXml(xmlStr : XMLDocument) {
+    var result;
+    var parser = require('xml2js');
+    parser.Parser().parseString(xmlStr, (e: any, r: any) => {result = r});
+    return result;
+}
+
   totalProductInCart(){
     this.pcAccessoiresService.getAllArticles()
     .subscribe(res=>{

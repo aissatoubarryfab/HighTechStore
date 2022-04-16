@@ -1,8 +1,8 @@
-<form> 
+<form [formGroup]="articleForm"> 
     <div  class= "form-group" > 
       <label  for= "nom" > Nom </label> 
       <div  class= "input-group" > 
-        <input  id= "fname"  class= "form-control" > 
+        <input  id= "name"  class= "form-control" [formControl]="articleForm.controls.nom" > 
       </div> 
     </div> 
     <div  class= "form-group" > 

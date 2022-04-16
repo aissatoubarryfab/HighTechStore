@@ -18,33 +18,33 @@ export class PcBureauComponent implements OnInit {
   articleSelected: boolean =false;
   totalItem! : number ;
 
-  pcBur = [
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/BurAp.webp',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/BurAs.jpg',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/BurLenov.avif',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/Burappl.jpg',
-       prix: '20 €'
-  },
+  // pcBur = [
+  //   {
+  //     label: 'Souris',
+  //     description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+  //     imag:'./assets/images/home/BurAp.webp',
+  //      prix: '20 €'
+  //   },
+  //   {
+  //     label: 'Souris',
+  //     description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+  //     imag:'./assets/images/home/BurAs.jpg',
+  //      prix: '20 €'
+  //   },
+  //   {
+  //     label: 'Souris',
+  //     description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+  //     imag:'./assets/images/home/BurLenov.avif',
+  //      prix: '20 €'
+  //   },
+  //   {
+  //     label: 'Souris',
+  //     description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+  //     imag:'./assets/images/home/Burappl.jpg',
+  //      prix: '20 €'
+  // },
   
-  ];
+  // ];
 
   constructor(
     private pcBureauService: ArticleService,
@@ -65,14 +65,14 @@ export class PcBureauComponent implements OnInit {
       console.log(this.totalItem)
     })
   }
-  /*addtocart(article : Article){
+  addtocart(article : Article){
     let cart = new Cart(article.id,article.idUser);
     this.cartService.addtoCart(cart).subscribe(res=>{
       this.articleSelected =  res;
       this.totalProductInCart();
 
     });
-  }*/
+  }
   openDetails(idArticle : number) {
 
     let dialogRef = this.dialog.open(DetailsArticleComponent, {
@@ -83,6 +83,5 @@ export class PcBureauComponent implements OnInit {
       this.router.navigate([this.router.url]);
     });
   }
-  addtocart(){}
   
 }

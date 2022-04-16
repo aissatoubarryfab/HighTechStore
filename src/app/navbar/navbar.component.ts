@@ -17,7 +17,6 @@ export class NavbarComponent implements OnInit {
     return this.authenticationService.CurrentUserValue;
   }
   get isConnected() :boolean{
-       console.log(this.currentUser)
     return this.currentUser == undefined ? false : true ;
   }
   ngOnInit(): void {

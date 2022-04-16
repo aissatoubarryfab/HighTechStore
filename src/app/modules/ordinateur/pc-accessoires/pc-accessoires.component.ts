@@ -5,10 +5,11 @@ import { Cart } from 'src/app/Cart';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryEnum } from 'src/app/enum/category.enum';
 import {  DetailsArticleComponent } from '../../datails-article/details_article.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { map } from 'rxjs/operators';
+import { User } from 'src/app/User';
 
 @Component({
   selector: 'app-pc-accessoires',
@@ -16,8 +17,8 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./pc-accessoires.component.css']
 })
 export class PcAccessoiresComponent implements OnInit {
-  articles :any
-  =[]
+   public articles: any; 
+  articlesObjet :any=[]
   articleSelected: boolean =false;
   totalItem! : number ;
 
@@ -53,32 +54,19 @@ export class PcAccessoiresComponent implements OnInit {
    prix: '20 €'
 },
   ];
+  cartService: any;
 
   constructor(
     private pcAccessoiresService: ArticleService,
-    private cartService :CartService,
     public dialog: MatDialog,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).pipe(map((response: any) =>
-    {console.log(response)
-      return this.parseXml(response);} )).subscribe(result => {
-      
-     this.articles= JSON.stringify(result, null, 4) as string;
-     console.log(this.articles)
-    });
-  }
-  generateArray(obj : any){
-    return Object.keys(obj).map((key)=>{ return obj[key]});
- }
-  parseXml(xmlStr : XMLDocument) {
-    var result;
-    var parser = require('xml2js');
-    parser.Parser().parseString(xmlStr, (e: any, r: any) => {result = r});
-    return result;
-}
+    this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).subscribe(result => {
+       this.articles= result;
+    });   
+  }  
 
   totalProductInCart(){
     this.pcAccessoiresService.getAllArticles()
@@ -87,20 +75,21 @@ export class PcAccessoiresComponent implements OnInit {
       console.log(this.totalItem)
     })
   }
-  /*addtocart(article : Article){
+  addtocart(article : Article){
     let cart = new Cart(article.id,article.idUser);
-    this.cartService.addtoCart(cart).subscribe(res=>{
+    this.cartService.addtoCart(cart).subscribe((res: boolean)=>{
       this.articleSelected =  res;
       this.totalProductInCart();
 
     });
-  }*/
+  }
   openDetails(idArticle : number) {
-
-    let dialogRef = this.dialog.open(DetailsArticleComponent, {
-      width: '250px',
-      data: { name: idArticle }
-            });
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.width = "60%";
+    let dialogRef = this.dialog.open(DetailsArticleComponent, dialogConfig );
+      dialogRef.componentInstance.idArticle = idArticle;
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate([this.router.url]);
     });
@@ -113,6 +102,4 @@ export class PcAccessoiresComponent implements OnInit {
   filterProductBy(){
 
   }
-
-  addtocart(){}
 }

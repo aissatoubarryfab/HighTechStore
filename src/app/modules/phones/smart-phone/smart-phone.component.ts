@@ -18,39 +18,39 @@ export class SmartPhoneComponent implements OnInit {
   articleSelected: boolean =false;
   totalItem! : number ;
 
-  SmartP = [
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/Smart1.jpeg',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/smart2.webp',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/SMART3.webp',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/smart4.webp',
-       prix: '20 €'
-  },
-  {
-    label: 'Souris',
-    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-    imag:'./assets/images/home/smart5.webp',
-     prix: '20 €'
-},
+//   SmartP = [
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//       imag:'./assets/images/home/Smart1.jpeg',
+//        prix: '20 €'
+//     },
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//       imag:'./assets/images/home/smart2.webp',
+//        prix: '20 €'
+//     },
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//       imag:'./assets/images/home/SMART3.webp',
+//        prix: '20 €'
+//     },
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//       imag:'./assets/images/home/smart4.webp',
+//        prix: '20 €'
+//   },
+//   {
+//     label: 'Souris',
+//     description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//     imag:'./assets/images/home/smart5.webp',
+//      prix: '20 €'
+// },
 
-  ];
+//   ];
 
   constructor(
     private smartPhoneService: ArticleService,
@@ -72,14 +72,14 @@ export class SmartPhoneComponent implements OnInit {
       console.log(this.totalItem)
     })
   }
-  /*addtocart(article : Article){
+  addtocart(article : Article){
     let cart = new Cart(article.id,article.idUser);
     this.cartService.addtoCart(cart).subscribe(res=>{
       this.articleSelected =  res;
       this.totalProductInCart();
 
     });
-  }*/
+  }
   openDetails(idArticle : number) {
 
     let dialogRef = this.dialog.open(DetailsArticleComponent, {
@@ -90,5 +90,4 @@ export class SmartPhoneComponent implements OnInit {
       this.router.navigate([this.router.url]);
     });
   }
-  addtocart(){}
 }

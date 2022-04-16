@@ -19,38 +19,38 @@ export class DisqueDurComponent implements OnInit {
   articleSelected: boolean =false;
   totalItem! : number ;
 
-  DisqueDur= [
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-       prix: '20 €'
-    },
-    {
-    label: 'Souris',
-    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-     prix: '20 €'
-  },
-  {
-  label: 'Souris',
-  description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-   prix: '20 €'
-},
-{
-label: 'Souris',
-description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
- prix: '20 €'
-},
-  ];
+//   DisqueDur= [
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//        prix: '20 €'
+//     },
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//        prix: '20 €'
+//     },
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//        prix: '20 €'
+//     },
+//     {
+//     label: 'Souris',
+//     description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//      prix: '20 €'
+//   },
+//   {
+//   label: 'Souris',
+//   description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//    prix: '20 €'
+// },
+// {
+// label: 'Souris',
+// description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//  prix: '20 €'
+// },
+//   ];
 
 
   constructor(
@@ -73,15 +73,14 @@ description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
       console.log(this.totalItem)
     })
   }
-  /*addtocart(article : Article){
+  addtocart(article : Article){
     let cart = new Cart(article.id,article.idUser);
     this.cartService.addtoCart(cart).subscribe(res=>{
       this.articleSelected =  res;
       this.totalProductInCart();
 
     });
-  }*/
-
+  }
   openDetails(idArticle : number) {
 
     let dialogRef = this.dialog.open(DetailsArticleComponent, {
@@ -93,6 +92,6 @@ description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
     });
   }
   
-  addtocart(){}
+
 
 }

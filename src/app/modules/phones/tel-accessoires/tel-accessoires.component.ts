@@ -19,39 +19,39 @@ export class TelAccessoiresComponent implements OnInit {
   articleSelected: boolean =false;
   totalItem! : number ;
 
-  TelAccess= [
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/TelA1.webp',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/TELA2.jpg',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/TELA3.jpg',
-       prix: '20 €'
-    },
-    {
-      label: 'Souris',
-      description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-      imag:'./assets/images/home/TELA4.webp',
-       prix: '20 €'
-  },
-  {
-    label: 'Souris',
-    description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
-    imag:'./assets/images/home/TELA5.png',
-     prix: '20 €'
-},
+//   TelAccess= [
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//       imag:'./assets/images/home/TelA1.webp',
+//        prix: '20 €'
+//     },
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//       imag:'./assets/images/home/TELA2.jpg',
+//        prix: '20 €'
+//     },
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//       imag:'./assets/images/home/TELA3.jpg',
+//        prix: '20 €'
+//     },
+//     {
+//       label: 'Souris',
+//       description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//       imag:'./assets/images/home/TELA4.webp',
+//        prix: '20 €'
+//   },
+//   {
+//     label: 'Souris',
+//     description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
+//     imag:'./assets/images/home/TELA5.png',
+//      prix: '20 €'
+// },
 
-  ];
+//   ];
 
   constructor(
     private telAccessoiresService: ArticleService,
@@ -73,14 +73,14 @@ export class TelAccessoiresComponent implements OnInit {
       console.log(this.totalItem)
     })
   }
-  /*addtocart(article : Article){
+  addtocart(article : Article){
     let cart = new Cart(article.id,article.idUser);
     this.cartService.addtoCart(cart).subscribe(res=>{
       this.articleSelected =  res;
       this.totalProductInCart();
 
     });
-  }*/
+  }
   openDetails(idArticle : number) {
 
     let dialogRef = this.dialog.open(DetailsArticleComponent, {
@@ -92,5 +92,4 @@ export class TelAccessoiresComponent implements OnInit {
     });
   }
 
-  addtocart(){}
 }

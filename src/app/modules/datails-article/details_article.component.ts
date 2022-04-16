@@ -13,26 +13,21 @@ import { ArticleService } from "../../services/article.service";
 
 export class DetailsArticleComponent implements OnInit 
 {
-   // @Input() idArticle!: number;
-    article! : Article
+   @Input() idArticle!: number;
+    article! : any
     articleForm!: FormGroup;
     submitted!: boolean;
     isLoading: boolean = true;
     constructor(
         private artcileService : ArticleService,
-        public dialogRef: MatDialogRef<DetailsArticleComponent>,
-        @Inject(MAT_DIALOG_DATA) public idArticle: number
+        public dialogRef: MatDialogRef<DetailsArticleComponent>
     ) { }
-
-
-        ngOnInit() {
+    ngOnInit() {
         this.initForm() ;
         this.getData();
-
     }
-
-    initForm()
-    {
+   
+    initForm(){
         this.articleForm = new FormGroup({
             idArticle: new FormControl(this. idArticle),
             nom: new FormControl(this.article?.label),
@@ -45,6 +40,7 @@ export class DetailsArticleComponent implements OnInit
         });
     }
     getData() {
+        console.log(this.idArticle)
         this.artcileService.getArticleById(this.idArticle).subscribe(res => {
             this.article  = res;
           });      

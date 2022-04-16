@@ -1,34 +1,14 @@
-<!--<div class="row">
-    <ng-container *ngFor="let item of articles">
-        <div class="card col-md-3">
-            <img src="{{item.photo}}" alt="">
-            <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.label}}</h5>
-            <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.description}}</p>
-            <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"><strong>Prix: </strong>{{item.price}}€</p>
-          <button class="btn btn-primary" (click)="addtocart(item)">Ajouter au panier</button>
-          <button class="btn btn-primary" (click)="openDetails(item.id)">Details</button>
-          
-
+<div class="row" style="width: 90%;">
+    <ng-container *ngFor="let item of articles ">
+        <div class="card col-md-3" style="align-content: center;">
+            <img class= img src="{{item.image}}" alt="">
+                <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.label}}</h5>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.description}}</p>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;"><strong>Prix: </strong>{{item.prix}}</p>
+            
+            <button class="btn btn-primary" (click)="addtocart(item)">Ajouter au panier</button>
+            <br>
+            <button class="btn btn-primary" (click)="openDetails(1)">Details</button>
         </div>
     </ng-container>
-</div>-->
-<br><br>
-<div class="row" style="width: 90%;">
-  <ng-container *ngFor="let item of DisqueDur">
-      <div class="card col-md-3" style="align-content: center;">
-          <img class= img src="./assets/images/home/img3.jpg" alt="">
-          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.label}}</h5>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.description}}</p>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;"><strong>Prix: </strong>{{item.prix}}</p>
-        
-      <button class="btn" (click)="addtocart()">Ajouter au panier</button>
-      <br>
-      <button class="btn" (click)="openDetails(1)">Details</button>
-        
-
-      </div>
-  </ng-container>
-</div>
-
-
-
+  </div>

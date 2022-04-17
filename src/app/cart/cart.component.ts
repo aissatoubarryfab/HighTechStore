@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Article } from '../Article';
 import { Cart } from '../Cart';
 import { CartService } from '../services/cart.service';
+import { AuthenticationService } from '../services/user.service';
 
 
 @Component({
@@ -14,8 +16,12 @@ export class CartComponent implements OnInit {
   public products : any = [];
   public grandTotal !: number;
   isEmptyCart: boolean = false;
+  get currentUser() : any {
+    return this.authenticationService.CurrentUserValue;
+  }
   constructor(
     private cartService : CartService,
+    public authenticationService :AuthenticationService,
     private router: Router,
   ) { }
 
@@ -28,16 +34,14 @@ export class CartComponent implements OnInit {
 
   }
   getAllProductInCart(){
-    this.cartService.getProducts(4)
+    this.cartService.getArticlesInCart(this.currentUser.id)
     .subscribe(res=>{
       this.products = res;
       
     });
   }
-  removeItem(idProduit : number ,idUser : number){
-    let cart  = new Cart(idProduit,idUser)
-    console.log(cart)
-    this.cartService.removeCartItem(cart)
+  removeItem(idProduit :number){
+    this.cartService.removeCartItem(idProduit)
     .subscribe({
       next :(data)=>{
         this.getAllProductInCart();

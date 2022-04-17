@@ -2,26 +2,58 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Cart } from '../Cart';
+import { Article } from '../Article';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
   constructor(private http:HttpClient) { }
-  getProducts(idUser: number): Observable<Cart[]>{
-    return this.http.post<Cart[]>("http://localhost:8080/ici_war/cart/list",idUser);
+  getArticlesInCart(idUser: number){
+    return this.http.get(`http://localhost:8080/ici_war/rest/listproduct/${idUser}`, { responseType: 'text' }).pipe(map((response: any) =>
+    { return this.parseXml(response); }));
+
   }
-  addtoCart(cart : Cart) :Observable<boolean>
+  parseXml(xmlStr : any) { 
+    var results ;
+     var parser ;
+     parser = require('xml2js').Parser(  
+       {  
+         trim: true,  
+         explicitArray: true  
+       }); 
+     parser.parseString(xmlStr, (error: any, result: any) => {
+       var obj = result.articles; 
+        let  arr = [];   
+         for (const k in obj.ApplicationConstant) {  
+           var item = obj.ApplicationConstant[k];  
+           arr.push({  
+             description: item.description[0],  
+             id: item.id[0],  
+             idCategorie: item.idCategorie[0],  
+             idUser: item.idUser[0],
+             label: item.label[0],
+             marque: item.marque[0],
+             price: item.price[0]
+           });  
+         }  
+         results = arr;
+     });  
+     return results;
+   }  
+  
+  addtoCart(idProduct : number,idUser : number): Observable<void>
   {
-    return this.http.post<boolean>("http://localhost:8080/ici_war/cart/create",cart)
+    return this.http.get<void>(`http://localhost:8080/ici_war/rest/cart/add/${idProduct}/${idUser}`)
   }
   getTotalPrice(idUser: number) :Observable<number>{
-    return this.http.post<number>("http://localhost:8080/ici_war/cart/totalPrice",idUser);
+    return this.http.post<number>("http://localhost:8080/ici_war/cart/rest/totalPrice",idUser);
   }
-  removeCartItem(cart : Cart):Observable<boolean>{
-    return this.http.post<boolean>(`http://localhost:8080/ici_war/cart/delete`,cart);
+  removeCartItem(idProduct : number):Observable<void>{
+    return this.http.get<void>(`http://localhost:8080/ici_war/rest/cart/delete/${idProduct}`);
   }
-  removeAllCart(idUser: number):Observable<boolean>{
-    return this.http.post<boolean>(`http://localhost:8080/ici_war/cart/deleteAll`,idUser);
+  removeAllCart(idUser: number):Observable<void>{
+    return this.http.get<void>(`http://localhost:8080/ici_war/cart/rest/delete/${idUser}`);
   }
 }

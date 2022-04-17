@@ -75,9 +75,7 @@ description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
     })
   }
   addtocart(article : Article){
-    let cart = new Cart(article.id,article.idUser);
-    this.cartService.addtoCart(cart).subscribe(res=>{
-      this.articleSelected =  res;
+    this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{
       this.totalProductInCart();
 
     });

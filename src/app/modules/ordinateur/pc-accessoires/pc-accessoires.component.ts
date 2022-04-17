@@ -54,12 +54,13 @@ export class PcAccessoiresComponent implements OnInit {
    prix: '20 €'
 },
   ];
-  cartService: any;
-
+ 
   constructor(
     private pcAccessoiresService: ArticleService,
     public dialog: MatDialog,
     private router: Router,
+    public cartService: CartService,
+
   ) { }
 
   ngOnInit(): void {
@@ -76,11 +77,8 @@ export class PcAccessoiresComponent implements OnInit {
     })
   }
   addtocart(article : Article){
-    let cart = new Cart(article.id,article.idUser);
-    this.cartService.addtoCart(cart).subscribe((res: boolean)=>{
-      this.articleSelected =  res;
+    this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{
       this.totalProductInCart();
-
     });
   }
   openDetails(idArticle : number) {

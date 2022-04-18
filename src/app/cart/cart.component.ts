@@ -16,18 +16,19 @@ export class CartComponent implements OnInit {
   public products : any = [];
   public grandTotal !: number;
   isEmptyCart: boolean = false;
-  get currentUser() : any {
-    return this.authenticationService.CurrentUserValue;
-  }
+
   constructor(
     private cartService : CartService,
     public authenticationService :AuthenticationService,
     private router: Router,
   ) { }
+  get currentUser() : any {
+    return this.authenticationService.CurrentUserValue;
+  }
 
   ngOnInit(): void {
     this.getAllProductInCart();
-    this.cartService.getTotalPrice(4)
+    this.cartService.getTotalPrice(this.currentUser.id)
     .subscribe(res=>{
        this.grandTotal =  res;
     });

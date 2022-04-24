@@ -81,6 +81,7 @@
 </head>
 <body>
   <style></style>
+  <form #loginForm="ngForm">
     <div class="container login-container">
       <div class="row">
         <div class="col-md-6 ads">
@@ -93,17 +94,16 @@
           <h3>Login</h3>
           <form>
             <div class="form-group">
-              <input type="text" class="form-control" name="username" placeholder="Username">
+              <input type="text" class="form-control" name="username"  #email placeholder="Username">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="password" placeholder="Password">
+              <input type="text" class="form-control" name="password" #password placeholder="Password">
             </div>
             <div class="form-group">
-              <button type="button" class="btn btn-primary btn-lg btn-block">Sign In</button>
+              <button type="button" class="btn btn-primary btn-lg btn-block" [disabled]="!loginForm.valid" (click)="OnSubmit(email.value,password.value)">Sign In</button>
             </div>
             <div class="form-group forget-password">
-              
-                <a href="#">Forget Password</a>
+              <a href="#">Forget Password</a>
             </div>
             <br><br>
             <p class="inscription"> <span>Pas de compte ? </span><a href="/inscription"> s'inscrire ici</a></p>
@@ -111,3 +111,5 @@
         </div>
       </div>
     </div>
+  </form>
+    

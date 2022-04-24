@@ -11,7 +11,7 @@ import { map } from 'rxjs/operators';
 export class CartService {
   constructor(private http:HttpClient) { }
   getArticlesInCart(idUser: number){
-    return this.http.get(`http://localhost:8080/ici_war/rest/listproduct/${idUser}`, { responseType: 'text' }).pipe(map((response: any) =>
+    return this.http.get(`http://localhost:8080/ici_war/rest/cart/listproduct/${idUser}`, { responseType: 'text' }).pipe(map((response: any) =>
     { return this.parseXml(response); }));
 
   }
@@ -43,12 +43,12 @@ export class CartService {
      return results;
    }  
   
-  addtoCart(idProduct : number,idUser : number): Observable<boolean>
+  addtoCart(idProduct : number,idUser : number)
   {
-    return this.http.get<boolean>(`http://localhost:8080/ici_war/rest/cart/add/${idProduct}/${idUser}`)
+    return this.http.get(`http://localhost:8080/ici_war/rest/cart/add/${idProduct}/${idUser}`, { responseType: 'text' })
   }
   getTotalPrice(idUser: number) :Observable<number>{
-    return this.http.get<number>(`http://localhost:8080/ici_war/cart/rest/cart/totalPrice/${idUser}`);
+    return this.http.get<number>(`http://localhost:8080/ici_war/rest/cart/totalPrice/${idUser}`);
   }
   removeCartItem(idProduct : number):Observable<boolean>{
     return this.http.get<boolean>(`http://localhost:8080/ici_war/rest/cart/delete/${idProduct}`);

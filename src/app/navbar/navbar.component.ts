@@ -26,11 +26,14 @@ export class NavbarComponent implements OnInit {
     this.totalProductInCart();
   }
   totalProductInCart(){
-    this.cartService.getArticlesInCart(this.currentUser.id)
+    if(this.isConnected){
+      this.cartService.getArticlesInCart(7)
      .subscribe((res : any)=>{
        this.totalItem = res?.length;
        console.log(this.totalItem)
       })
+    }
+    
   }
   connect(){
     this.router.navigate(['/Connexion']);

@@ -78,6 +78,7 @@ export class PcAccessoiresComponent implements OnInit {
   }
   addtocart(article : Article){
     this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{
+      console.log(res)
       this.totalProductInCart();
     });
   }

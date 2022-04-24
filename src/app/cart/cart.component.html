@@ -1,5 +1,5 @@
-<ng-container *ngIf="products.length !=0 && !isEmptyCart">
-    <div class="container">
+<ng-container>
+    <div class="container" *ngIf = "products.length != 0 && !isEmptyCart">
         <div class="card-table">
             <div class="cart-product">
                 <table class="table table-responsive">
@@ -8,16 +8,18 @@
                           <th scope="col">Nom</th>
                           <th scope="col">Description</th>
                           <th scope="col">Prix</th>
+                          <th scope="col">Marque</th>
                           <th scope="col">Catégorie</th>
                           <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let produit of products">
-                            <td>{{ produit.name }}</td>
+                            <td>{{ produit.label }}</td>
                             <td style="width: 12%;">{{produit.description}}</td>
-                            <th style="width: 12%;">{{produit.prix}}</th>
-                            <td style="width: 12%;">{{getCategory(produit.categoryCode)}}</td>
+                            <th style="width: 12%;">{{produit.price}}</th>
+                            <th style="width: 12%;">{{produit.marque}}</th>
+                            <td style="width: 12%;">{{getCategory(produit. idCategorie)}}</td>
                             <td>
                                 <button (click)="removeItem(produit.id)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                             </td>
@@ -35,8 +37,8 @@
         </div>
     </div>
 </ng-container>
-<ng-container *ngIf="products?.length == 0 || isEmptyCart">
-  <div class="container">
+<ng-container>
+  <div class="container" *ngIf = "products?.length == 0 || isEmptyCart">
       <div class="card">
           <h5 class="card-title">Mon panier</h5>
       </div>

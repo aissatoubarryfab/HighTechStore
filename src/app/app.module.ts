@@ -20,6 +20,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { FooterComponent } from './footer/footer.component';
+import { CommonModule } from '@angular/common';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { FooterComponent } from './footer/footer.component';
     NavbarComponent,
     DetailsArticleComponent,
     FooterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,9 @@ import { FooterComponent } from './footer/footer.component';
     MatSelectModule,
     ReactiveFormsModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonModule,
+    BrowserModule
     ],
   providers: [ 
     MatDialog,

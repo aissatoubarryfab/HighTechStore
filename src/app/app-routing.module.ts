@@ -18,6 +18,7 @@ import { DisqueDurComponent } from './modules/stockage/disque-dur/disque-dur.com
 import { StockageAccessoiresComponent } from './modules/stockage/stockage-accessoires/stockage-accessoires.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth.guard.';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path: '', 
@@ -36,6 +37,7 @@ const routes: Routes = [
   { path: 'CleUSB', component: CleUSBComponent },
   { path: 'DisqueDur', component: DisqueDurComponent },
   { path: 'StockageAccesoires', component: StockageAccessoiresComponent },
+  { path: 'cart', component: CartComponent },
 
 ];
   

@@ -21,12 +21,12 @@
                             <th style="width: 12%;">{{produit.marque}}</th>
                             <td style="width: 12%;">{{getCategory(produit. idCategorie)}}</td>
                             <td>
-                                <button (click)="removeItem(produit.id)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                                <button (click)="removeItem(produit.id)" class="btn btn-danger">supprimer<i class="fas fa-trash-alt"></i></button>
                             </td>
                         </tr>
                         <tr>
                             <td colspan="1"></td>
-                            <td><button  (click)="openProducts()" class="btn btn-primary">Voir plus</button></td>
+                            <td><button  (click)="openProducts()" class="btn btn-primary">Retour</button></td>
                             <td><strong> Total: {{grandTotal}} EUR </strong></td>
                             <td><button class="btn btn-success">Acheter</button></td>
                             <td><button (click)="emptycart()" class="btn btn-danger">Supprimer tous</button></td>

@@ -7,6 +7,7 @@ import { CategoryEnum } from 'src/app/enum/category.enum';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailsArticleComponent } from '../../datails-article/details_article.component';
+import { AuthenticationService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-tel-fix',
@@ -63,9 +64,12 @@ export class TelFixComponent implements OnInit {
     private telFixService: ArticleService,
     public dialog: MatDialog,
     private router: Router,
-    
-  ) { }
+    public authenticationService :AuthenticationService,
 
+    ) { }
+    get currentUser() : any {
+      return this.authenticationService.CurrentUserValue;
+    }
   ngOnInit(): void {
     this.telFixService.getAllArticleByCategory(CategoryEnum.TEL_FIX)
      .subscribe(res => {
@@ -73,11 +77,10 @@ export class TelFixComponent implements OnInit {
     });
   }
   totalProductInCart(){
-    this.telFixService.getAllArticles()
-    .subscribe(res=>{
+    this.cartService.getArticlesInCart(this.currentUser.id[0])
+    .subscribe((res : any)=>{
       this.totalItem = res?.length;
-      console.log(this.totalItem)
-    })
+     })
   }
   addtocart(article : Article){
     this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{

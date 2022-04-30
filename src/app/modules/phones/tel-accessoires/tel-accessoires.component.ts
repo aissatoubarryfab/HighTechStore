@@ -7,6 +7,7 @@ import { CategoryEnum } from 'src/app/enum/category.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DetailsArticleComponent } from '../../datails-article/details_article.component';
+import { AuthenticationService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-tel-accessoires',
@@ -58,8 +59,12 @@ export class TelAccessoiresComponent implements OnInit {
     private cartService :CartService,
     public dialog: MatDialog,
     private router: Router,
-  ) { }
+    public authenticationService :AuthenticationService,
 
+    ) { }
+    get currentUser() : any {
+      return this.authenticationService.CurrentUserValue;
+    }
   ngOnInit(): void {
     this.telAccessoiresService.getAllArticleByCategory(CategoryEnum.TEL_ACCESSOIRES)
      .subscribe(res => {
@@ -67,11 +72,10 @@ export class TelAccessoiresComponent implements OnInit {
     });
   }
   totalProductInCart(){
-    this.telAccessoiresService.getAllArticles()
-    .subscribe(res=>{
+    this.cartService.getArticlesInCart(this.currentUser.id[0])
+    .subscribe((res : any)=>{
       this.totalItem = res?.length;
-      console.log(this.totalItem)
-    })
+     })
   }
   addtocart(article : Article){
     this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{

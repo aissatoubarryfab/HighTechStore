@@ -7,6 +7,7 @@ import { CategoryEnum } from 'src/app/enum/category.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DetailsArticleComponent } from '../../datails-article/details_article.component';
+import { AuthenticationService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pc-portable',
@@ -58,8 +59,12 @@ export class PcPortableComponent implements OnInit {
     private cartService :CartService,
     public dialog: MatDialog,
     protected router: Router,
-  ) { }
+    public authenticationService :AuthenticationService,
 
+    ) { }
+    get currentUser() : any {
+      return this.authenticationService.CurrentUserValue;
+    }
   ngOnInit(): void {
     
     this.pcPortableService.getAllArticleByCategory(CategoryEnum.PC_PORTABLE).subscribe(res => {
@@ -67,11 +72,10 @@ export class PcPortableComponent implements OnInit {
     });
   }
   totalProductInCart(){
-    this.pcPortableService.getAllArticles()
-    .subscribe(res=>{
+    this.cartService.getArticlesInCart(this.currentUser.id[0])
+    .subscribe((res : any)=>{
       this.totalItem = res?.length;
-      console.log(this.totalItem)
-    })
+     })
   }
   addtocart(article : Article){
     this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{

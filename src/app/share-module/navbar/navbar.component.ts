@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CartService } from '../services/cart.service';
-import { AuthenticationService } from '../services/user.service';
+import { CartService } from '../../services/cart.service';
+import { AuthenticationService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +9,7 @@ import { AuthenticationService } from '../services/user.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  public totalItem?: number;
+  @Input() totalItem?: number;
 
   constructor( 
     public router:Router,
@@ -20,20 +20,19 @@ export class NavbarComponent implements OnInit {
     return this.authenticationService.CurrentUserValue;
   }
   get isConnected() :boolean{
-    return this.currentUser == undefined ? false : true ;
+    return localStorage.getItem('user') == null ? false : true ;
   }
   ngOnInit(): void {
+    
     this.totalProductInCart();
   }
   totalProductInCart(){
     if(this.isConnected){
-      this.cartService.getArticlesInCart(7)
+      this.cartService.getArticlesInCart(this.currentUser.id[0])
      .subscribe((res : any)=>{
        this.totalItem = res?.length;
-       console.log(this.totalItem)
       })
-    }
-    
+    }    
   }
   connect(){
     this.router.navigate(['/Connexion']);

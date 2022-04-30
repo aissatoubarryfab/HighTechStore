@@ -45,7 +45,7 @@ export class CartService {
   
   addtoCart(idProduct : number,idUser : number)
   {
-    return this.http.get(`http://localhost:8080/ici_war/rest/cart/add/${idProduct}/${idUser}`, { responseType: 'text' })
+    return this.http.get(`http://localhost:8080/ici_war/rest/cart/add/${idProduct}/${idUser}`)
   }
   getTotalPrice(idUser: number) :Observable<number>{
     return this.http.get<number>(`http://localhost:8080/ici_war/rest/cart/totalPrice/${idUser}`);

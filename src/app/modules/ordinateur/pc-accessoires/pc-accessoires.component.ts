@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field'; 
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/User';
+import { AuthenticationService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pc-accessoires',
@@ -21,6 +22,7 @@ export class PcAccessoiresComponent implements OnInit {
   articlesObjet :any=[]
   articleSelected: boolean =false;
   totalItem! : number ;
+
 
   pcAccess = [
     {
@@ -60,8 +62,12 @@ export class PcAccessoiresComponent implements OnInit {
     public dialog: MatDialog,
     private router: Router,
     public cartService: CartService,
+    public authenticationService :AuthenticationService,
 
   ) { }
+  get currentUser() : any {
+    return this.authenticationService.CurrentUserValue;
+  }
 
   ngOnInit(): void {
     this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).subscribe(result => {
@@ -70,11 +76,10 @@ export class PcAccessoiresComponent implements OnInit {
   }  
 
   totalProductInCart(){
-    this.pcAccessoiresService.getAllArticles()
-    .subscribe(res=>{
-      this.totalItem = res?.length;
-      console.log(this.totalItem)
-    })
+    this.cartService.getArticlesInCart(this.currentUser.id[0])
+     .subscribe((res : any)=>{
+       this.totalItem = res?.length;
+      })
   }
   addtocart(article : Article){
     this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{

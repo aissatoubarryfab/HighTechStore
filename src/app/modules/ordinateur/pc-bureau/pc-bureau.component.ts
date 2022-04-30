@@ -7,6 +7,7 @@ import { CategoryEnum } from 'src/app/enum/category.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DetailsArticleComponent } from '../../datails-article/details_article.component';
+import { AuthenticationService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-pc-bureau',
@@ -51,7 +52,12 @@ export class PcBureauComponent implements OnInit {
     private cartService :CartService,
     public dialog: MatDialog,
     private router: Router,
-  ) { }
+    public authenticationService :AuthenticationService,
+
+    ) { }
+    get currentUser() : any {
+      return this.authenticationService.CurrentUserValue;
+    }
 
   ngOnInit(): void {
     this.pcBureauService.getAllArticleByCategory(CategoryEnum.PC_BUREAU).subscribe(res => {
@@ -59,11 +65,10 @@ export class PcBureauComponent implements OnInit {
     });
   }
   totalProductInCart(){
-    this.pcBureauService.getAllArticles()
-    .subscribe(res=>{
+    this.cartService.getArticlesInCart(this.currentUser.id[0])
+    .subscribe((res : any)=>{
       this.totalItem = res?.length;
-      console.log(this.totalItem)
-    })
+     })
   }
   addtocart(article : Article){
     this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{

@@ -7,7 +7,7 @@ import { PcAccessoiresComponent } from './modules/ordinateur/pc-accessoires/pc-a
 import { ConnexionComponent } from './auth/login/connexion.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './share-module/navbar/navbar.component';
 import { PhonesModule } from './modules/phones/phones.module';
 import { OrdinateurModule } from './modules/ordinateur/ordinateur.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -22,6 +22,10 @@ import { MatInputModule } from '@angular/material/input';
 import { FooterComponent } from './footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart/cart.component';
+import { ShareModuleModule } from './share-module/share-module.module';
+import { CleUSBComponent } from './modules/stockage/cle-usb/cle-usb.component';
+import { DisqueDurComponent } from './modules/stockage/disque-dur/disque-dur.component';
+import { StockageAccessoiresComponent } from './modules/stockage/stockage-accessoires/stockage-accessoires.component';
 
 @NgModule({
   declarations: [
@@ -31,15 +35,16 @@ import { CartComponent } from './cart/cart.component';
     PcAccessoiresComponent,
     ConnexionComponent,
     HomeComponent,
-    NavbarComponent,
     DetailsArticleComponent,
     FooterComponent,
-    CartComponent
+    CartComponent,
+    DisqueDurComponent,
+    CleUSBComponent,
+    StockageAccessoiresComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PhonesModule,
     OrdinateurModule,
     FormsModule,
     ReactiveFormsModule,
@@ -52,12 +57,15 @@ import { CartComponent } from './cart/cart.component';
     MatInputModule,
     BrowserAnimationsModule,
     CommonModule,
-    BrowserModule
+    BrowserModule,
+    ShareModuleModule
     ],
   providers: [ 
     MatDialog,
     // MatDialogRef,
    // BrowserAnimationsModule
+  ],
+  exports :[
   ],
   bootstrap: [AppComponent]
 })

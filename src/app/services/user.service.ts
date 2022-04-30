@@ -10,7 +10,7 @@ import { Role } from '../Role';
 @Injectable({ providedIn: 'root' })
 
 export class AuthenticationService {
-    private userSubject: BehaviorSubject<User| null>;
+    private userSubject: BehaviorSubject<User| null> ;
     public user: Observable<User|null>;
 
 
@@ -21,29 +21,46 @@ export class AuthenticationService {
       
        //Mettre l'objet en réserve
        //l'objet utilisateur de localStorage qui permet à l'utilisateur de rester connecté entre les actualisations de page ou après la fermeture du navigateur.
-        this.userSubject = new BehaviorSubject<User| null>(JSON.parse(localStorage.getItem('user') || '{}'));
+       this.userSubject = new BehaviorSubject<User|null>(JSON.parse(localStorage.getItem('user') || '{}'));
         this.user = this.userSubject.asObservable();
     }
 
     public get CurrentUserValue(): User |null {
-        return this.userSubject.value;
+        return this.userSubject?.value;
     }
 
     login(email: string, password: string) {
-      return this.http.get<any>(`http://localhost:8080/ici_war/user/login/${email}/${password}`)
-        .pipe(map(user => {
+      return this.http.get(`http://localhost:8080/ici_war/rest/user/login/${email}/${password}`, { responseType: 'text' })
+        .pipe(map(user  => {
             // stocker les détails de l'utilisateur et le jeton jwt dans le stockage local pour que l'utilisateur reste connecté entre les actualisations de la page
-            localStorage.setItem('user', JSON.stringify(user));
-            this.userSubject.next(user);
-            return user;
+            localStorage.setItem('user', JSON.stringify(this.parseXml(user)));
+            this.userSubject.next(this.parseXml(user));
+            return this.parseXml(user);
+
+
         }));
   }
-
+  parseXml(xmlStr : any) : User{ 
+    let  results: User = new User('','',0,'','') ;
+     var parser ;
+     parser = require('xml2js').Parser(  
+       {  
+         trim: true,  
+         explicitArray: true  
+       }); 
+     parser.parseString(xmlStr, (error: any, result: any) => {
+      var item = result.ApplicationConstant;          
+           const arr = new User(item.email,item.firstname,item.id,item.lastname,item.role);
+           results = arr;
+           console.log(arr) ; 
+           });
+     return results;
+   }  
     logout() {
         // supprimer l'utilisateur du stockage local pour déconnecter l'utilisateur
         localStorage.removeItem('user');
         this.userSubject.next(null);
-        this.router.navigate(['/Connexion']);
+        this.router.navigate(['/']);
     }
   getById(id: number) {
     return this.http.get<User>(`http://localhost:8080/ici_war/${id}`);
@@ -53,10 +70,10 @@ export class AuthenticationService {
     return this.http.get<User[]>(`http://localhost:8080/ici_war/users`);
   }
   get isConnected() :boolean{
-    return this.CurrentUserValue == undefined ? false : true ;
+    return  localStorage.getItem('user') == null ? false : true ;
   }  
 
   isAdmin(){
-   return this.isConnected && this.CurrentUserValue?.role === Role.Admin ? true : false;
+   return this.isConnected && this.CurrentUserValue?.role[0] == 'admin' ? true : false;
   }
 }

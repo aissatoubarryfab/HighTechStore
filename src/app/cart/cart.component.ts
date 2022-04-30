@@ -27,7 +27,7 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cartService.getArticlesInCart(7)
+    this.cartService.getArticlesInCart(this.currentUser.id[0])
     .subscribe(res=>{
       this.products = res;
       console.log( this.products.length)
@@ -51,6 +51,11 @@ export class CartComponent implements OnInit {
     .subscribe({
       next :(data)=>{
         this.getAllProductInCart();
+        this.cartService.getTotalPrice(7)
+        .subscribe(res=>{
+           this.grandTotal =  res;
+        });
+    
        // this.toastService.success('Le produit est bien été supprimé du panier')
       },
      // error :()=>  this.toastService.error('Erreur lors de la suppression')
@@ -70,7 +75,7 @@ export class CartComponent implements OnInit {
   });
   }
   openProducts(){
-    this.router.navigate(['/articles']);// revenir à toute lesarticle
+    this.router.navigate(['/']);// revenir à l'acceuil pou reselectionner
   }
   getCategory(categoryCode : number) : string {
     switch (categoryCode) {

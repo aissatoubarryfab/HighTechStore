@@ -7,6 +7,7 @@ import { CategoryEnum } from 'src/app/enum/category.enum';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DetailsArticleComponent } from '../../datails-article/details_article.component';
+import { AuthenticationService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-disque-dur',
@@ -58,7 +59,12 @@ export class DisqueDurComponent implements OnInit {
     private disqueDurService: ArticleService,
     public dialog: MatDialog,
     private router: Router,
-  ) { }
+    public authenticationService :AuthenticationService,
+
+    ) { }
+    get currentUser() : any {
+      return this.authenticationService.CurrentUserValue;
+    }
 
   ngOnInit(): void {
     this.disqueDurService.getAllArticleByCategory(CategoryEnum.DISQUE_DUR)
@@ -67,11 +73,10 @@ export class DisqueDurComponent implements OnInit {
     });
   }
   totalProductInCart(){
-    this.disqueDurService.getAllArticles()
-    .subscribe(res=>{
+    this.cartService.getArticlesInCart(this.currentUser.id[0])
+    .subscribe((res : any)=>{
       this.totalItem = res?.length;
-      console.log(this.totalItem)
-    })
+     })
   }
   addtocart(article : Article){
     this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{

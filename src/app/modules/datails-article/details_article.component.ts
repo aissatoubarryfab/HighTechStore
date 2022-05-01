@@ -47,6 +47,8 @@ export class DetailsArticleComponent implements OnInit
     close() {
         this.dialogRef.close();
     }
+
+    
     getCategory(categoryCode : number) : string {
         
         if(categoryCode == CategoryEnum.PC_ACCESSOIRES) {

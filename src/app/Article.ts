@@ -19,5 +19,4 @@ export class Article{
                 this.photo=photo;
                 this.idCategorie=idCategorie;
         }
-
 }

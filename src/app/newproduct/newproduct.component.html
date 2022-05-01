@@ -1,1 +1,41 @@
-<p>newproduct works!</p>
+<form [formGroup]="articleForm"> 
+  <div  class= "form-group" > 
+    <label  for= "nom" > Nom </label> 
+    <div  class= "input-group" > 
+      <input  [readonly]="!isAdminCurrentUser" formControlName="nom"  id= "name"  class= "form-control"  > 
+    </div> 
+  </div> 
+  <div  class= "form-group" > 
+    <label  for= "categorie" > Categorie </label> 
+    <div  class= "input-group" > 
+      <input  [readonly]="true" formControlName="idCategorie" id= "idCategorie"  class= "form-control" > 
+    </div> 
+  </div>
+  <div  class= "form-group" > 
+    <label  for= "Description" > Description </label> 
+    <div  class= "input-group" > 
+      <input  [readonly]="!isAdminCurrentUser"   formControlName="description" id= "dept"  class= "form-control" > 
+    </div> 
+  </div> 
+  <div  class= "form-group" > 
+    <label> Prix </label> 
+    <div  class= "input-group" > 
+      <input   [readonly]="!isAdminCurrentUser"  formControlName="prix" id= "prix"  class= "form-control" >
+    </div> 
+  </div> 
+  <div  class= "form-group" > 
+    <label> Marque </label> 
+    <div  class= "input-group" > 
+      <input  [readonly]="!isAdminCurrentUser"  formControlName="prix" id= "prix"  class= "form-control" >
+    </div> 
+  </div> 
+  <button class="mat-raised-button"
+          (click)="close()">
+      fermer
+  </button>
+
+  <button *ngIf="!this.articleForm.pristine" class="mat-raised-button mat-primary"
+          (click)="save()">
+      Valider
+  </button>
+</form>

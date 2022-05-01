@@ -22,10 +22,14 @@ import { MatInputModule } from '@angular/material/input';
 import { FooterComponent } from './footer/footer.component';
 import { CommonModule } from '@angular/common';
 import { CartComponent } from './cart/cart.component';
+<<<<<<< Updated upstream
 import { ShareModuleModule } from './share-module/share-module.module';
 import { CleUSBComponent } from './modules/stockage/cle-usb/cle-usb.component';
 import { DisqueDurComponent } from './modules/stockage/disque-dur/disque-dur.component';
 import { StockageAccessoiresComponent } from './modules/stockage/stockage-accessoires/stockage-accessoires.component';
+=======
+import { NewproductComponent } from './newproduct/newproduct.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -38,9 +42,13 @@ import { StockageAccessoiresComponent } from './modules/stockage/stockage-access
     DetailsArticleComponent,
     FooterComponent,
     CartComponent,
+<<<<<<< Updated upstream
     DisqueDurComponent,
     CleUSBComponent,
     StockageAccessoiresComponent
+=======
+    NewproductComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

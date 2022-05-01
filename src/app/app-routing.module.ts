@@ -19,6 +19,7 @@ import { StockageAccessoiresComponent } from './modules/stockage/stockage-access
 import { HttpClientModule } from '@angular/common/http';
 import { AuthGuard } from './auth.guard.';
 import { CartComponent } from './cart/cart.component';
+import { NewproductComponent } from './newproduct/newproduct.component';
 
 const routes: Routes = [
   { path: '', 
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: 'DisqueDur', component: DisqueDurComponent },
   { path: 'StockageAccesoires', component: StockageAccessoiresComponent },
   { path: 'cart', component: CartComponent },
-
+  { path: 'newproduct', component: NewproductComponent},
 ];
   
 @NgModule({

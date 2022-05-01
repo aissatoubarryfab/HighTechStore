@@ -96,6 +96,10 @@ export class TelFixComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate([this.router.url]);
     });
-  }  
+  }
+  
+  newproduit(){
+    this.router.navigate(['/newproduct']);
+  }
 
 }

@@ -4,10 +4,11 @@ import { ArticleService } from 'src/app/services/article.service';
 import { Cart } from 'src/app/Cart';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryEnum } from 'src/app/enum/category.enum';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DetailsArticleComponent } from '../../datails-article/details_article.component';
 import { AuthenticationService } from 'src/app/services/user.service';
+import { NewproductComponent } from 'src/app/newproduct/newproduct.component';
 
 @Component({
   selector: 'app-disque-dur',
@@ -66,11 +67,14 @@ export class DisqueDurComponent implements OnInit {
       return this.authenticationService.CurrentUserValue;
     }
 
+    loadArticles(){
+      this.disqueDurService.getAllArticleByCategory(CategoryEnum.DISQUE_DUR).subscribe(result => {
+        this.articles= result;
+     });   
+    } 
+
   ngOnInit(): void {
-    this.disqueDurService.getAllArticleByCategory(CategoryEnum.DISQUE_DUR)
-     .subscribe(res => {
-      this.articles  = res;
-    });
+  this.loadArticles();
   }
   totalProductInCart(){
     this.cartService.getArticlesInCart(this.currentUser.id[0])
@@ -94,6 +98,28 @@ export class DisqueDurComponent implements OnInit {
     });
   }
   
+  newProduct(){
 
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    const article = new Article(0,'','',this.currentUser.id[0],0, '','', CategoryEnum.DISQUE_DUR);
+    dialogConfig.data = article;
+    
+
+    const dialogRef = this.dialog.open(NewproductComponent,
+        dialogConfig);
+
+
+    dialogRef.afterClosed().subscribe(
+        val => {
+          this.disqueDurService.addArticle(val).subscribe(res=>{
+  
+            this.loadArticles();
+          });
+          }
+    );
+  }
 
 }

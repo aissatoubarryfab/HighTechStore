@@ -4,10 +4,11 @@ import { ArticleService } from 'src/app/services/article.service';
 import { Cart } from 'src/app/Cart';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryEnum } from 'src/app/enum/category.enum';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DetailsArticleComponent } from '../../datails-article/details_article.component';
 import { AuthenticationService } from 'src/app/services/user.service';
+import { NewproductComponent } from 'src/app/newproduct/newproduct.component';
 
 @Component({
   selector: 'app-pc-portable',
@@ -65,11 +66,15 @@ export class PcPortableComponent implements OnInit {
     get currentUser() : any {
       return this.authenticationService.CurrentUserValue;
     }
-  ngOnInit(): void {
-    
-    this.pcPortableService.getAllArticleByCategory(CategoryEnum.PC_PORTABLE).subscribe(res => {
-      this.articles  = res;
-    });
+
+    loadArticles(){
+      this.pcPortableService.getAllArticleByCategory(CategoryEnum.PC_PORTABLE).subscribe(result => {
+        this.articles= result;
+     });   
+    } 
+
+  ngOnInit(): void { 
+    this.loadArticles();
   }
   totalProductInCart(){
     this.cartService.getArticlesInCart(this.currentUser.id[0])
@@ -93,5 +98,29 @@ export class PcPortableComponent implements OnInit {
     });
   }
 
+
+  newProduct(){
+    
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    const article = new Article(0,'','',this.currentUser.id[0],0, '','', CategoryEnum.PC_PORTABLE);
+    dialogConfig.data = article;
+    
+
+    const dialogRef = this.dialog.open(NewproductComponent,
+        dialogConfig);
+
+
+    dialogRef.afterClosed().subscribe(
+        val => {
+          this.pcPortableService.addArticle(val).subscribe(res=>{
+  
+            this.loadArticles();
+          });
+          }
+    );
+  }
 
 }

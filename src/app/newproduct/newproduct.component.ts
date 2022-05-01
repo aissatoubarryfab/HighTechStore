@@ -30,7 +30,7 @@ export class NewproductComponent implements OnInit {
   }
 
   ngOnInit(){
-    
+
     console.log(this.article.idCategorie)
     this.articleForm = new FormGroup({
         nom: new FormControl(this.article?.label),
@@ -39,6 +39,7 @@ export class NewproductComponent implements OnInit {
         marque :new FormControl(this.article?.marque),
         prix :new FormControl(this.article?.price) 
     });
+    
   }
 
     save() {

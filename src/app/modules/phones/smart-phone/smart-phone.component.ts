@@ -4,10 +4,11 @@ import { ArticleService } from 'src/app/services/article.service';
 import { Cart } from 'src/app/Cart';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryEnum } from 'src/app/enum/category.enum';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DetailsArticleComponent } from '../../datails-article/details_article.component';
 import { AuthenticationService } from 'src/app/services/user.service';
+import { NewproductComponent } from 'src/app/newproduct/newproduct.component';
 
 @Component({
   selector: 'app-smart-phone',
@@ -65,11 +66,14 @@ export class SmartPhoneComponent implements OnInit {
     return this.authenticationService.CurrentUserValue;
   }
 
+  loadArticles(){
+    this.smartPhoneService.getAllArticleByCategory(CategoryEnum.SMART_PHONE).subscribe(result => {
+      this.articles= result;
+   });   
+  }
+
   ngOnInit(): void {
-    this.smartPhoneService.getAllArticleByCategory(CategoryEnum.SMART_PHONE)
-     .subscribe(res => {
-      this.articles  = res;
-    });
+  this.loadArticles();
   }
   totalProductInCart(){
     this.cartService.getArticlesInCart(this.currentUser.id[0])
@@ -91,5 +95,33 @@ export class SmartPhoneComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.router.navigate([this.router.url]);
     });
+  }
+
+  newProduct(){
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    const article = new Article(0,'','',this.currentUser.id[0],0, '','', CategoryEnum.SMART_PHONE);
+    dialogConfig.data = article;
+    
+
+    const dialogRef = this.dialog.open(NewproductComponent,
+        dialogConfig);
+
+
+    dialogRef.afterClosed().subscribe(
+        val => {
+          this.smartPhoneService.addArticle(val).subscribe(res=>{
+  
+            this.loadArticles();
+          });
+          }
+    );
+  }
+
+  filterProductBy(){
+
   }
 }

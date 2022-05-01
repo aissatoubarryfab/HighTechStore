@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     return this.authenticationService.CurrentUserValue;
   }
   ngOnInit(): void {
-    this.cartService.getArticlesInCart(this.currentUser.id[0])
+    this.cartService.getArticlesInCart(this.currentUser?.id[0])
      .subscribe((res : any)=>{
        this.totalItem = res?.length;
       })

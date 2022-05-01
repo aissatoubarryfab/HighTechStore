@@ -70,10 +70,13 @@ export class PcAccessoiresComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).subscribe(result => {
-       this.articles= result;
-    });   
+  this.loadArticles();  
   }  
+  loadArticles(){
+    this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).subscribe(result => {
+      this.articles= result;
+   });   
+  }
 
   totalProductInCart(){
     this.cartService.getArticlesInCart(this.currentUser.id[0])
@@ -87,16 +90,29 @@ export class PcAccessoiresComponent implements OnInit {
       this.totalProductInCart();
     });
   }
-  openDetails(idArticle : number) {
+  openDetails(article : Article) {
+
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-    let dialogRef = this.dialog.open(DetailsArticleComponent, dialogConfig );
-      dialogRef.componentInstance.idArticle = idArticle;
-    dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([this.router.url]);
-    });
+
+        dialogConfig.disableClose = true;
+        dialogConfig.autoFocus = true;
+
+        dialogConfig.data = article;
+        
+
+        const dialogRef = this.dialog.open(DetailsArticleComponent,
+            dialogConfig);
+
+
+        dialogRef.afterClosed().subscribe(
+            val => {
+              this.pcAccessoiresService.updateArticle(val).subscribe(res=>{
+      
+                this.loadArticles();
+              });
+              }
+        );
+
   }
 
   newProduct(){

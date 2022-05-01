@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from '../Article';
 import { Cart } from '../Cart';
+import { CategoryEnum } from '../enum/category.enum';
 import { CartService } from '../services/cart.service';
 import { AuthenticationService } from '../services/user.service';
 
@@ -78,39 +79,28 @@ export class CartComponent implements OnInit {
     this.router.navigate(['/']);// revenir à l'acceuil pou reselectionner
   }
   getCategory(categoryCode : number) : string {
-    switch (categoryCode) {
-      case 1:
-        return "PC accessoires";
-      break;
-      case 2:
+        
+    if(categoryCode == CategoryEnum.PC_ACCESSOIRES) {
+    return "PC accessoires";
+    }else  if(categoryCode == CategoryEnum.PC_BUREAU) {
         return "PC bureau";
-      break;
-      case 3:
+    }else  if(categoryCode == CategoryEnum.PC_PORTABLE) {
         return "PC portable";
-      break;
-      case 4:
-        return "Smart phone";   
-      break;
-      case 5:
+    } else  if(categoryCode == CategoryEnum.SMART_PHONE) {
+        return "Smart phone";
+    } else  if(categoryCode == CategoryEnum.TEL_ACCESSOIRES) {
         return "Tel accessoires ";
-      break;
-      case 6:
+    } else  if(categoryCode == CategoryEnum.TEL_FIX) {
         return "Tel fix";
-      break;
-      case 7:
-        return "Cle USB";    
-      break;
-      case 8:
-        return "Disque dur"; 
-      break;
-      case 9:
-        return "Stockage accessoires";  
-      break;
-      default :
-       return"";
-       break;
-   
-     }
+    } else  if(categoryCode == CategoryEnum.CLE_USB) {
+        return "Cle USB";
+    }else  if(categoryCode == CategoryEnum.DISQUE_DUR) {
+        return "Disque dur";
+    }else  if(categoryCode == CategoryEnum.STOCKAGE_ACCESSOIRES) {
+        return "Stockage accessoires";
+    }  
+    return "";
+
   }
 
 }

@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { map } from 'rxjs/operators';
 import { User } from 'src/app/User';
 import { AuthenticationService } from 'src/app/services/user.service';
+import { NewproductComponent } from 'src/app/newproduct/newproduct.component';
 
 @Component({
   selector: 'app-pc-accessoires',
@@ -71,7 +72,9 @@ export class PcAccessoiresComponent implements OnInit {
 
   ngOnInit(): void {
   this.loadArticles();  
-  }  
+  } 
+  
+  
   loadArticles(){
     this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).subscribe(result => {
       this.articles= result;
@@ -117,6 +120,26 @@ export class PcAccessoiresComponent implements OnInit {
 
   newProduct(){
 
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    const article = new Article(0,'','',this.currentUser.id[0],0, '','', CategoryEnum.PC_ACCESSOIRES);
+    dialogConfig.data = article;
+    
+
+    const dialogRef = this.dialog.open(NewproductComponent,
+        dialogConfig);
+
+
+    dialogRef.afterClosed().subscribe(
+        val => {
+          this.pcAccessoiresService.addArticle(val).subscribe(res=>{
+  
+            this.loadArticles();
+          });
+          }
+    );
   }
 
   filterProductBy(){

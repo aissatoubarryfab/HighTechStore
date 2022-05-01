@@ -87,16 +87,33 @@ export class DisqueDurComponent implements OnInit {
       this.totalProductInCart();
     });
   }
-  openDetails(idArticle : number) {
+  openDetails(article : Article) {
+    const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.data = article;
+    
+      const dialogRef = this.dialog.open(DetailsArticleComponent,
+      dialogConfig);
 
-    let dialogRef = this.dialog.open(DetailsArticleComponent, {
-      width: '250px',
-      data: { name: idArticle }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([this.router.url]);
-    });
+      dialogRef.afterClosed().subscribe(   
+        
+        val => {
+          console.log(val)
+          this.disqueDurService.updateArticle(val.id,
+            val.nom,
+            val.marque,
+            val.description,
+            CategoryEnum.DISQUE_DUR,
+            val.idUser,
+            val.prix).subscribe(res=>{
+              console.log('bbb')
+              this.loadArticles();
+          });
+        }
+      );
   }
+
   
   newProduct(){
 
@@ -114,7 +131,15 @@ export class DisqueDurComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
         val => {
-          this.disqueDurService.addArticle(val).subscribe(res=>{
+          this.disqueDurService.addArticle(
+            val.nom,
+            val.marque,
+            val.description,
+            val.photo,
+            CategoryEnum.DISQUE_DUR,
+            val.idUser,
+            val.prix
+          ).subscribe(res=>{
   
             this.loadArticles();
           });

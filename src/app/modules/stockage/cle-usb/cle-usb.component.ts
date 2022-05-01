@@ -87,15 +87,31 @@ export class CleUSBComponent implements OnInit {
       this.totalProductInCart();
     });
   }
-  openDetails(idArticle : number) {
+  openDetails(article : Article) {
+    const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.data = article;
+    
+      const dialogRef = this.dialog.open(DetailsArticleComponent,
+      dialogConfig);
 
-    let dialogRef = this.dialog.open(DetailsArticleComponent, {
-      width: '250px',
-      data: { name: idArticle }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([this.router.url]);
-    });
+      dialogRef.afterClosed().subscribe(   
+        
+        val => {
+          console.log(val)
+          this.cleUsbService.updateArticle(val.id,
+            val.nom,
+            val.marque,
+            val.description,
+            CategoryEnum.CLE_USB,
+            val.idUser,
+            val.prix).subscribe(res=>{
+              console.log('bbb')
+              this.loadArticles();
+          });
+        }
+      );
   }
 
   newProduct(){
@@ -114,7 +130,15 @@ export class CleUSBComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(
         val => {
-          this.cleUsbService.addArticle(val).subscribe(res=>{
+          this.cleUsbService.addArticle(
+            val.nom,
+            val.marque,
+            val.description,
+            val.photo,
+            CategoryEnum.CLE_USB,
+            val.idUser,
+            val.prix
+          ).subscribe(res=>{
   
             this.loadArticles();
           });

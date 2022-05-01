@@ -33,11 +33,14 @@ export class NewproductComponent implements OnInit {
 
     console.log(this.article.idCategorie)
     this.articleForm = new FormGroup({
+        photo : new FormControl(''),
         nom: new FormControl(this.article?.label),
         idCategorie: new FormControl(this.getCategory(this.article?.idCategorie)),
         description : new FormControl(this.article?.description),
         marque :new FormControl(this.article?.marque),
-        prix :new FormControl(this.article?.price) 
+        prix :new FormControl(this.article?.price),
+        idUser : new FormControl(this.article?.idUser) ,
+        id :new FormControl(this.article?.id)
     });
     
   }

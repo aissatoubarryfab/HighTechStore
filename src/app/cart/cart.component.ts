@@ -17,6 +17,7 @@ export class CartComponent implements OnInit {
   public products : any = [];
   public grandTotal !: number;
   isEmptyCart: boolean = false;
+  totalItem: any;
 
   constructor(
     private cartService : CartService,
@@ -28,33 +29,41 @@ export class CartComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cartService.getArticlesInCart(this.currentUser.id[0])
+    this.cartService.getArticlesInCart(this.currentUser?.id[0])
     .subscribe(res=>{
       this.products = res;
       console.log( this.products.length)
       
     });
-    this.cartService.getTotalPrice(7)
+    this.cartService.getTotalPrice(this.currentUser?.id[0])
     .subscribe(res=>{
        this.grandTotal =  res;
     });
+    this.totalProductInCart();
 
   }
   getAllProductInCart(){
-    this.cartService.getArticlesInCart(7)
+    this.cartService.getArticlesInCart(this.currentUser?.id[0])
     .subscribe(res=>{
       this.products = res;
       
     });
+  }
+  totalProductInCart(){
+    this.cartService.getArticlesInCart(this.currentUser.id[0])
+    .subscribe((res : any)=>{
+      this.totalItem = res?.length;
+     })
   }
   removeItem(idProduit :number){
     this.cartService.removeCartItem(idProduit)
     .subscribe({
       next :(data)=>{
         this.getAllProductInCart();
-        this.cartService.getTotalPrice(7)
+        this.cartService.getTotalPrice(this.currentUser?.id[0])
         .subscribe(res=>{
            this.grandTotal =  res;
+           this.totalProductInCart();
         });
     
        // this.toastService.success('Le produit est bien été supprimé du panier')
@@ -64,11 +73,12 @@ export class CartComponent implements OnInit {
   });
   }
   emptycart(){
-    this.cartService.removeAllCart(4)
+    this.cartService.removeAllCart(this.currentUser.id[0])
     .subscribe({
       next :(data)=>{
         this.isEmptyCart= true;
-        this.getAllProductInCart();    
+        this.getAllProductInCart();  
+        this.totalProductInCart();  
         //this.toastService.success('Les produits ont bien été supprimés du panier')
       },
      // error :()=>  this.toastService.error('Erreur lors de la suppression')

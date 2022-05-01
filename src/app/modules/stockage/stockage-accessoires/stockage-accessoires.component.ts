@@ -89,16 +89,31 @@ description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
       this.totalProductInCart();
     });
   }
+  openDetails(article : Article) {
+    const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.data = article;
+    
+      const dialogRef = this.dialog.open(DetailsArticleComponent,
+      dialogConfig);
 
-  openDetails(idArticle : number) {
-
-    let dialogRef = this.dialog.open(DetailsArticleComponent, {
-      width: '250px',
-      data: { name: idArticle }
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      this.router.navigate([this.router.url]);
-    });
+      dialogRef.afterClosed().subscribe(   
+        
+        val => {
+          console.log(val)
+          this.stockageAccessoires.updateArticle(val.id,
+            val.nom,
+            val.marque,
+            val.description,
+            CategoryEnum.STOCKAGE_ACCESSOIRES,
+            val.idUser,
+            val.prix).subscribe(res=>{
+              console.log('bbb')
+              this.loadArticles();
+          });
+        }
+      );
   }
 
   newProduct(){
@@ -117,7 +132,15 @@ description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
 
     dialogRef.afterClosed().subscribe(
         val => {
-          this.stockageAccessoires.addArticle(val).subscribe(res=>{
+          this.stockageAccessoires.addArticle(
+            val.nom,
+            val.marque,
+            val.description,
+            val.photo,
+            CategoryEnum.STOCKAGE_ACCESSOIRES,
+            val.idUser,
+            val.prix
+          ).subscribe(res=>{
   
             this.loadArticles();
           });

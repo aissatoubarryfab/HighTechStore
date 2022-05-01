@@ -71,11 +71,11 @@ export class PcAccessoiresComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  this.loadArticles();  
-  } 
-  
+   this.loadArticles();  
+  }  
   
   loadArticles(){
+    console.log('aaa')
     this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).subscribe(result => {
       this.articles= result;
    });   
@@ -94,37 +94,38 @@ export class PcAccessoiresComponent implements OnInit {
     });
   }
   openDetails(article : Article) {
-
     const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.autoFocus = true;
+      dialogConfig.data = article;
+    
+      const dialogRef = this.dialog.open(DetailsArticleComponent,
+      dialogConfig);
 
-        dialogConfig.disableClose = true;
-        dialogConfig.autoFocus = true;
-
-        dialogConfig.data = article;
+      dialogRef.afterClosed().subscribe(   
         
-
-        const dialogRef = this.dialog.open(DetailsArticleComponent,
-            dialogConfig);
-
-
-        dialogRef.afterClosed().subscribe(
-            val => {
-              this.pcAccessoiresService.updateArticle(val).subscribe(res=>{
-      
-                this.loadArticles();
-              });
-              }
-        );
-
+        val => {
+          console.log(val)
+          this.pcAccessoiresService.updateArticle(val.id,
+            val.nom,
+            val.marque,
+            val.description,
+            CategoryEnum.PC_ACCESSOIRES,
+            val.idUser,
+            val.prix).subscribe(res=>{
+              console.log('bbb')
+              this.loadArticles();
+          });
+        }
+      );
   }
-
   newProduct(){
 
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    const article = new Article(0,'','',this.currentUser.id[0],0, '','', CategoryEnum.PC_ACCESSOIRES);
+    const article = new Article(0,"","",this.currentUser.id[0],0, "","", CategoryEnum.PC_ACCESSOIRES);
     dialogConfig.data = article;
     
 
@@ -133,8 +134,18 @@ export class PcAccessoiresComponent implements OnInit {
 
 
     dialogRef.afterClosed().subscribe(
+     
         val => {
-          this.pcAccessoiresService.addArticle(val).subscribe(res=>{
+          console.log(val)
+          this.pcAccessoiresService.addArticle(
+            val.nom,
+            val.marque,
+            val.description,
+            val.photo,
+            CategoryEnum.PC_ACCESSOIRES,
+            val.idUser,
+            val.prix
+          ).subscribe(res=>{
   
             this.loadArticles();
           });

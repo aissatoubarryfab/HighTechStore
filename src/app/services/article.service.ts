@@ -30,16 +30,37 @@ export class ArticleService {
   getArticleById(idArticle: number){
       return this.http.get(`http://localhost:8080/ici_war/rest/articles/${idArticle}`, { responseType: 'text' });
   }
-  addArticle(newAricle:Article):Observable<Article>{
-    return this.http.post<Article>("http://localhost:8080/ici_war/rest/articles/create",newAricle);
+  addArticle( label : string,marque : string,description : string, photo : string,idCategorie : number, idUser: number, price : number):Observable<Article>{
+    return this.http.get<Article>(`http://localhost:8080/ici_war/rest/articles/add/${label}/${marque}/${description}/${photo}/${idCategorie}/${idUser}/${price}`).pipe(map((response: any) =>
+    { return this.parseXmlOfOneArticle(response); }));
+
   }
+  
   deleteArticle(id: number):Observable<any>{
       return this.http.delete<any>(`http://localhost:8080/ici_war/rest/articles/${id}`);
   }
-  updateArticle(ArticleToUpdate:number):Observable<Article>{
-   return this.http.post<Article>("/http://localhost:8080/ici_war/rest/articles",ArticleToUpdate);
+
+  updateArticle(idArticle : number, label : string,marque : string,description : string,idCategorie : number, idUser: number, price : number) :Observable<Article>{
+   return this.http.get<Article>(`http://localhost:8080/ici_war/rest/articles/update/${idArticle}/${label}/${marque}/${description}/${idCategorie}/${idUser}/${price}`).pipe(map((response: any) =>
+   { return this.parseXmlOfOneArticle(response); }));
+
   }
-  
+  parseXmlOfOneArticle(xmlStr: any): any {
+    let  results: Article = new Article(0,"","",0,0,"","",0) ;
+    var parser ;
+    parser = require('xml2js').Parser(  
+      {  
+        trim: true,  
+        explicitArray: true  
+      }); 
+    parser.parseString(xmlStr, (error: any, result: any) => {
+     var item = result.ApplicationConstant;          
+          const arr = new Article(item.id,item.label,item.description,item.idUser,item.price,item.marque,item.photo,item.idCategorie);
+          results = arr;
+          console.log(arr) ; 
+          });
+    return results;
+  }
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

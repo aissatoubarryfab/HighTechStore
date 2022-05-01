@@ -36,9 +36,10 @@ export class ArticleService {
   deleteArticle(id: number):Observable<any>{
       return this.http.delete<any>(`http://localhost:8080/ici_war/rest/articles/${id}`);
   }
-  updateArticle(ArticleToUpdate:Article):Observable<Article>{
-   return this.http.post<Article>(`/http://localhost:8080/ici_war/rest/articles/update/${ArticleToUpdate.id}`,ArticleToUpdate);
+  updateArticle(ArticleToUpdate:number):Observable<Article>{
+   return this.http.post<Article>("/http://localhost:8080/ici_war/rest/articles",ArticleToUpdate);
   }
+  
   handleError(error: HttpErrorResponse) {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {

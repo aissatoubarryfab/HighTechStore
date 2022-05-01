@@ -1,4 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Article } from '../Article';
+import { ArticleService } from '../services/article.service';
+import { AbstractControl, FormControl, FormGroup } from "@angular/forms";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { CategoryEnum } from "src/app/enum/category.enum";
+import { AuthenticationService } from "src/app/services/user.service";
 
 @Component({
   selector: 'app-newproduct',
@@ -7,9 +15,63 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewproductComponent implements OnInit {
 
-  constructor() { }
+  articleForm!: FormGroup;
+    submitted!: boolean;
+    isLoading: boolean = true; 
 
-  ngOnInit(): void {
+  constructor(private router: Router,private rout: Router,
+     private artcileService : ArticleService,
+     public dialogRef: MatDialogRef<NewproductComponent>,
+     @Inject(MAT_DIALOG_DATA) public article :Article,
+     public authenticationService :AuthenticationService) { }
+
+     get isAdminCurrentUser() : any {
+      return this.authenticationService.isAdmin();
   }
+
+  ngOnInit(){
+    
+    console.log(this.article.idCategorie)
+    this.articleForm = new FormGroup({
+        nom: new FormControl(this.article?.label),
+        idCategorie: new FormControl(this.getCategory(this.article?.idCategorie)),
+        description : new FormControl(this.article?.description),
+        marque :new FormControl(this.article?.marque),
+        prix :new FormControl(this.article?.price) 
+    });
+  }
+
+    save() {
+        this.dialogRef.close(this.articleForm.value);
+    }
+
+    close() {
+        this.dialogRef.close();
+    }
+
+    getCategory(categoryCode : number) : string {
+        
+        if(categoryCode == CategoryEnum.PC_ACCESSOIRES) {
+        return "PC accessoires";
+        }else  if(categoryCode == CategoryEnum.PC_BUREAU) {
+            return "PC bureau";
+        }else  if(categoryCode == CategoryEnum.PC_PORTABLE) {
+            return "PC portable";
+        } else  if(categoryCode == CategoryEnum.SMART_PHONE) {
+            return "Smart phone";
+        } else  if(categoryCode == CategoryEnum.TEL_ACCESSOIRES) {
+            return "Tel accessoires ";
+        } else  if(categoryCode == CategoryEnum.TEL_FIX) {
+            return "Tel fix";
+        } else  if(categoryCode == CategoryEnum.CLE_USB) {
+            return "Cle USB";
+        }else  if(categoryCode == CategoryEnum.DISQUE_DUR) {
+            return "Disque dur";
+        }else  if(categoryCode == CategoryEnum.STOCKAGE_ACCESSOIRES) {
+            return "Stockage accessoires";
+        }  
+        return "";
+
+    }
 
 }

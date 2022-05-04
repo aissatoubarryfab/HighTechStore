@@ -143,5 +143,10 @@ description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
           }
     );
   }
+  DeleteArticle(idArticle : number){
+    this.stockageAccessoires.deleteArticle(idArticle).subscribe(res=>{
+      this.loadArticles();
+    });
+  }
 
 }

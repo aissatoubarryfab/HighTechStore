@@ -143,5 +143,10 @@ export class DisqueDurComponent implements OnInit {
           }
     );
   }
+  DeleteArticle(idArticle : number){
+    this.disqueDurService.deleteArticle(idArticle).subscribe(res=>{
+      this.loadArticles();
+    });
+  }
 
 }

@@ -146,5 +146,10 @@ export class TelFixComponent implements OnInit {
           }
     );
   }
+  DeleteArticle(idArticle : number){
+    this.telFixService.deleteArticle(idArticle).subscribe(res=>{
+      this.loadArticles();
+    });
+  }
 
 }

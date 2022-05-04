@@ -142,5 +142,10 @@ export class PcPortableComponent implements OnInit {
           }
     );
   }
+  DeleteArticle(idArticle : number){
+    this.pcPortableService.deleteArticle(idArticle).subscribe(res=>{
+      this.loadArticles();
+    });
+  }
 
 }

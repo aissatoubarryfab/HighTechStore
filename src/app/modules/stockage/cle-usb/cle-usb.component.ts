@@ -142,5 +142,10 @@ export class CleUSBComponent implements OnInit {
           }
     );
   }
+  DeleteArticle(idArticle : number){
+    this.cleUsbService.deleteArticle(idArticle).subscribe(res=>{
+      this.loadArticles();
+    });
+  }
 
 }

@@ -35,7 +35,7 @@ export class ArticleService {
   }
   
   deleteArticle(id: number):Observable<any>{
-      return this.http.delete<any>(`http://localhost:8080/ici_war/rest/articles/${id}`);
+      return this.http.get<any>(`http://localhost:8080/ici_war/rest/articles/delete/${id}`);
   }
 
   updateArticle(idArticle : number, label : string,marque : string,description : string,idCategorie : number, idUser: number, price : number) :Observable<Article>{

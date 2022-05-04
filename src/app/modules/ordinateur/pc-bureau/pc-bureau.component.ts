@@ -136,5 +136,10 @@ export class PcBureauComponent implements OnInit {
           }
     );
   }
+  DeleteArticle(idArticle : number){
+    this.pcBureauService.deleteArticle(idArticle).subscribe(res=>{
+      this.loadArticles();
+    });
+  }
   
 }

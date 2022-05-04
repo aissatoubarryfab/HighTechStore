@@ -141,6 +141,11 @@ export class TelAccessoiresComponent implements OnInit {
           }
     );
   }
+  DeleteArticle(idArticle : number){
+    this.telAccessoiresService.deleteArticle(idArticle).subscribe(res=>{
+      this.loadArticles();
+    });
+  }
 
 
 }

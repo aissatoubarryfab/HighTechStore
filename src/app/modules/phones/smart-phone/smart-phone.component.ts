@@ -142,7 +142,9 @@ export class SmartPhoneComponent implements OnInit {
     );
   }
 
-  filterProductBy(){
-
+  DeleteArticle(idArticle : number){
+    this.smartPhoneService.deleteArticle(idArticle).subscribe(res=>{
+      this.loadArticles();
+    });
   }
 }

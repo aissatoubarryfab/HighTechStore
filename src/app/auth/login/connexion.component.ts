@@ -20,8 +20,6 @@ export class ConnexionComponent implements OnInit {
 
   OnSubmit(email : string,password : string ){
      this.userService.login(email,password).subscribe((data : any)=>{
-      console.log(data.id.toString())
-      console.log(data)
       this.router.navigate(['/']);
     },
     (err : HttpErrorResponse)=>{

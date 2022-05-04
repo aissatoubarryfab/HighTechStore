@@ -99,7 +99,6 @@ export class TelAccessoiresComponent implements OnInit {
       dialogRef.afterClosed().subscribe(   
         
         val => {
-          console.log(val)
           this.telAccessoiresService.updateArticle(val.id,
             val.nom,
             val.marque,
@@ -107,7 +106,6 @@ export class TelAccessoiresComponent implements OnInit {
             CategoryEnum.TEL_ACCESSOIRES,
             val.idUser,
             val.prix).subscribe(res=>{
-              console.log('bbb')
               this.loadArticles();
           });
         }
@@ -133,7 +131,6 @@ export class TelAccessoiresComponent implements OnInit {
             val.nom,
             val.marque,
             val.description,
-            val.photo,
             CategoryEnum.TEL_ACCESSOIRES,
             val.idUser,
             val.prix

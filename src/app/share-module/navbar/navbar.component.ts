@@ -23,8 +23,6 @@ export class NavbarComponent implements OnInit {
     return localStorage.getItem('user') == null ? false : true ;
   }
   ngOnInit(): void {
-    console.log( localStorage.getItem('user'))
-    console.log(this.isConnected)
     this.totalProductInCart();
   }
   totalProductInCart(){

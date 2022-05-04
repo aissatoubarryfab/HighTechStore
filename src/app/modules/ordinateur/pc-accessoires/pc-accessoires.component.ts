@@ -75,7 +75,6 @@ export class PcAccessoiresComponent implements OnInit {
   }  
   
   loadArticles(){
-    console.log('aaa')
     this.pcAccessoiresService.getAllArticleByCategory(CategoryEnum.PC_ACCESSOIRES).subscribe(result => {
       this.articles= result;
    });   
@@ -89,7 +88,6 @@ export class PcAccessoiresComponent implements OnInit {
   }
   addtocart(article : Article){
     this.cartService.addtoCart(article.id,article.idUser).subscribe(res=>{
-      console.log(res)
       this.totalProductInCart();
     });
   }
@@ -101,20 +99,20 @@ export class PcAccessoiresComponent implements OnInit {
     
       const dialogRef = this.dialog.open(DetailsArticleComponent,
       dialogConfig);
-
       dialogRef.afterClosed().subscribe(   
         
         val => {
-          console.log(val)
           this.pcAccessoiresService.updateArticle(val.id,
             val.nom,
             val.marque,
             val.description,
             CategoryEnum.PC_ACCESSOIRES,
             val.idUser,
-            val.prix).subscribe(res=>{
-              console.log('bbb')
-              this.loadArticles();
+            val.prix).subscribe({
+              next: res => {
+              this.loadArticles()},
+              error: err => console.error(err),
+              complete: () => console.log('DONE!')
           });
         }
       );
@@ -136,24 +134,21 @@ export class PcAccessoiresComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
      
         val => {
-          console.log(val)
           this.pcAccessoiresService.addArticle(
             val.nom,
             val.marque,
             val.description,
-            val.photo,
             CategoryEnum.PC_ACCESSOIRES,
             val.idUser,
             val.prix
-          ).subscribe(res=>{
-  
-            this.loadArticles();
-          });
-          }
+          ).subscribe({
+            next: res => {
+            this.loadArticles()},
+            error: err => console.error(err),
+            complete: () => console.log('DONE!')
+        });
+      }
     );
   }
 
-  filterProductBy(){
-
-  }
 }

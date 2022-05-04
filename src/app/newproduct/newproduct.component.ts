@@ -30,8 +30,6 @@ export class NewproductComponent implements OnInit {
   }
 
   ngOnInit(){
-
-    console.log(this.article.idCategorie)
     this.articleForm = new FormGroup({
         photo : new FormControl(''),
         nom: new FormControl(this.article?.label),

@@ -99,7 +99,6 @@ export class PcPortableComponent implements OnInit {
       dialogRef.afterClosed().subscribe(   
         
         val => {
-          console.log(val)
           this.pcPortableService.updateArticle(val.id,
             val.nom,
             val.marque,
@@ -107,7 +106,6 @@ export class PcPortableComponent implements OnInit {
             CategoryEnum.PC_PORTABLE,
             val.idUser,
             val.prix).subscribe(res=>{
-              console.log('bbb')
               this.loadArticles();
           });
         }
@@ -134,7 +132,6 @@ export class PcPortableComponent implements OnInit {
             val.nom,
             val.marque,
             val.description,
-            val.photo,
             CategoryEnum.PC_PORTABLE,
             val.idUser,
             val.prix

@@ -98,7 +98,6 @@ export class SmartPhoneComponent implements OnInit {
       dialogRef.afterClosed().subscribe(   
         
         val => {
-          console.log(val)
           this.smartPhoneService.updateArticle(val.id,
             val.nom,
             val.marque,
@@ -106,7 +105,6 @@ export class SmartPhoneComponent implements OnInit {
             CategoryEnum.SMART_PHONE,
             val.idUser,
             val.prix).subscribe(res=>{
-              console.log('bbb')
               this.loadArticles();
           });
         }
@@ -133,7 +131,6 @@ export class SmartPhoneComponent implements OnInit {
             val.nom,
             val.marque,
             val.description,
-            val.photo,
             CategoryEnum.SMART_PHONE,
             val.idUser,
             val.prix

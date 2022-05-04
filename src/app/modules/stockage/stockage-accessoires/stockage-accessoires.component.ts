@@ -98,10 +98,8 @@ description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
       const dialogRef = this.dialog.open(DetailsArticleComponent,
       dialogConfig);
 
-      dialogRef.afterClosed().subscribe(   
-        
+      dialogRef.afterClosed().subscribe(       
         val => {
-          console.log(val)
           this.stockageAccessoires.updateArticle(val.id,
             val.nom,
             val.marque,
@@ -109,7 +107,6 @@ description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
             CategoryEnum.STOCKAGE_ACCESSOIRES,
             val.idUser,
             val.prix).subscribe(res=>{
-              console.log('bbb')
               this.loadArticles();
           });
         }
@@ -136,7 +133,6 @@ description: 'ordi a vennnde jzmhdkjdbfhhfnbhgds',
             val.nom,
             val.marque,
             val.description,
-            val.photo,
             CategoryEnum.STOCKAGE_ACCESSOIRES,
             val.idUser,
             val.prix

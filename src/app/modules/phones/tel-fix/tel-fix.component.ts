@@ -104,7 +104,6 @@ export class TelFixComponent implements OnInit {
       dialogRef.afterClosed().subscribe(   
         
         val => {
-          console.log(val)
           this.telFixService.updateArticle(val.id,
             val.nom,
             val.marque,
@@ -112,7 +111,6 @@ export class TelFixComponent implements OnInit {
             CategoryEnum.TEL_FIX,
             val.idUser,
             val.prix).subscribe(res=>{
-              console.log('bbb')
               this.loadArticles();
           });
         }
@@ -128,7 +126,6 @@ export class TelFixComponent implements OnInit {
     const article = new Article(0,'','',this.currentUser.id[0],0, '','', CategoryEnum.TEL_FIX);
     dialogConfig.data = article;
     
-
     const dialogRef = this.dialog.open(NewproductComponent,
         dialogConfig);
 
@@ -139,7 +136,6 @@ export class TelFixComponent implements OnInit {
             val.nom,
             val.marque,
             val.description,
-            val.photo,
             CategoryEnum.TEL_FIX,
             val.idUser,
             val.prix

@@ -99,7 +99,6 @@ export class DisqueDurComponent implements OnInit {
       dialogRef.afterClosed().subscribe(   
         
         val => {
-          console.log(val)
           this.disqueDurService.updateArticle(val.id,
             val.nom,
             val.marque,
@@ -107,7 +106,6 @@ export class DisqueDurComponent implements OnInit {
             CategoryEnum.DISQUE_DUR,
             val.idUser,
             val.prix).subscribe(res=>{
-              console.log('bbb')
               this.loadArticles();
           });
         }
@@ -135,7 +133,6 @@ export class DisqueDurComponent implements OnInit {
             val.nom,
             val.marque,
             val.description,
-            val.photo,
             CategoryEnum.DISQUE_DUR,
             val.idUser,
             val.prix

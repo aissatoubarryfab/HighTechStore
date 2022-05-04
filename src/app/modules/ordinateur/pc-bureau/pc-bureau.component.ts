@@ -93,7 +93,6 @@ export class PcBureauComponent implements OnInit {
       dialogRef.afterClosed().subscribe(   
         
         val => {
-          console.log(val)
           this.pcBureauService.updateArticle(val.id,
             val.nom,
             val.marque,
@@ -101,7 +100,6 @@ export class PcBureauComponent implements OnInit {
             CategoryEnum.PC_BUREAU,
             val.idUser,
             val.prix).subscribe(res=>{
-              console.log('bbb')
               this.loadArticles();
           });
         }
@@ -128,7 +126,6 @@ export class PcBureauComponent implements OnInit {
             val.nom,
             val.marque,
             val.description,
-            val.photo,
             CategoryEnum.PC_BUREAU,
             val.idUser,
             val.prix

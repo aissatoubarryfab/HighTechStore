@@ -1,21 +1,22 @@
 <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
-  
-  <img src="assets/logo.png" width="30" height="10" class="d-inline-block align-top" id="logo" alt=""> 
-  
+
+  <img src="assets/logo.png" width="30" height="10" class="d-inline-block align-top" id="logo" alt="">
+
 
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="nav navbar-nav flex-fill justify-content-center">
 
-      <li class="nav-item active"> 
+      <li class="nav-item active">
         <a class="nav-link na" href="">Accueil<span class="sr-only"></span></a>
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle na" href="#" id="navbarDropdownMenuLink"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle na" href="#" id="navbarDropdownMenuLink" role="button"
+          data-bs-toggle="dropdown" aria-expanded="false">
           Ordinateurs
         </a>
         <div class="dropdown-menu" aria-labbeldby="navbarDropdownMenuLink">
-          <a href = "/PcPortable" class="dropdown-item">PC Portable</a>
+          <a href="/PcPortable" class="dropdown-item">PC Portable</a>
           <a class="dropdown-item" href="/PcBureau">PC Bureau</a>
           <hr class="dropdown-divider">
           <a class="dropdown-item" href="/PcAccessoires">Accessoires</a>
@@ -23,43 +24,48 @@
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle na" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <a class="nav-link dropdown-toggle na" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
           Téléphonies
         </a>
         <div class="dropdown-menu" aria-labbeldby="navbarDropdown">
-          <li><a class="dropdown-item" href="/Smart">Smatphone</a></li>
-          <li><a class="dropdown-item" href="/Fixe">Tel fixe</a></li>
-          <hr class="dropdown-divider">
-          <li><a class="dropdown-item" href="/PhoneAccessoires">Accessoires</a></li>
-        </div>
-      </li>
-    
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle na" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Stockage
-        </a>
-        <div class="dropdown-menu" aria-labbeldby="navbarDropdown">
-          <li><a class="dropdown-item" href="/CleUSB">Disque dur</a></li>
-          <li><a class="dropdown-item" href="/DisqueDur">Clé USB</a></li>
-          <hr class="dropdown-divider">
-          <li><a class="dropdown-item" href="/StockageAccesoires">Accessoires</a></li>
-        </div>
-      </li>
-    </ul>
+      <li><a class="dropdown-item" href="/Smart">Smatphone</a></li>
+      <li><a class="dropdown-item" href="/Fixe">Tel fixe</a></li>
+      <hr class="dropdown-divider">
+      <li><a class="dropdown-item" href="/PhoneAccessoires">Accessoires</a></li>
   </div>
-  <form class="searchbar " style= "margin-left: 500px; margin-top: -1px;">
+  </li>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle na" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+      aria-expanded="false">
+      Stockage
+    </a>
+    <div class="dropdown-menu" aria-labbeldby="navbarDropdown">
+  <li><a class="dropdown-item" href="/CleUSB">Disque dur</a></li>
+  <li><a class="dropdown-item" href="/DisqueDur">Clé USB</a></li>
+  <hr class="dropdown-divider">
+  <li><a class="dropdown-item" href="/StockageAccesoires">Accessoires</a></li>
+  </div>
+  </li>
+  </ul>
+  </div>
+  <form class="searchbar " style="margin-left: 500px; margin-top: -1px;">
     <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
   </form>
 
   <div>
-  <button class="search-btn" type="submit">OK</button>
-</div>
-<div  *ngIf="isConnected">
-  <a href="/cart" ><img src="./assets/cart.png">
-    <div style="font-size: 15px;" class="badge bg-danger">{{totalItem}}</div>  </a> 
-    <a style="font-size: 15px;" (click)="disconnect()" href = "/Connexion">Déconnexion</a> 
-  
-</div> 
-<a *ngIf="!isConnected" href="/Connexion"><img  style= "width:50px; margin-right: 10%;" src="./assets/images/home/userIcon.jpg" ></a>
+    <button class="search-btn" type="submit">OK</button>
+  </div>
+  <div *ngIf="isConnected">
+    <a href="/cart"><img src="./assets/cart.png">
+      <div style="font-size: 15px;" class="badge bg-danger">{{totalItem}}</div>
+    </a>
+    <button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+      <a (click)="disconnect()" href="/Connexion">Déconnexion</a>
+    </button>
+  </div>
+  <a *ngIf="!isConnected" href="/Connexion"><img style="width:50px; margin-right: 10%;"
+      src="./assets/images/home/userIcon.jpg"></a>
 </nav>
 <hr>

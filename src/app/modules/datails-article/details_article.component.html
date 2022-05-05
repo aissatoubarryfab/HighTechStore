@@ -1,86 +1,24 @@
-<form [formGroup]="articleForm"> 
-    <div  class= "form-group" > 
-      <label  for= "nom" > Nom </label> 
-      <div  class= "input-group" > 
-        <input  [readonly]="!isAdminCurrentUser" formControlName="nom"  id= "name"  class= "form-control"  > 
-      </div> 
-    </div> 
-    <div  class= "form-group" > 
-      <label  for= "categorie" > Categorie </label> 
-      <div  class= "input-group" > 
-        <input  [readonly]="true" formControlName="idCategorie" id= "idCategorie"  class= "form-control" > 
-      </div> 
-    </div>
-    <div  class= "form-group" > 
-      <label  for= "Description" > Description </label> 
-      <div  class= "input-group" > 
-        <input  [readonly]="!isAdminCurrentUser"   formControlName="description" id= "dept"  class= "form-control" > 
-      </div> 
-    </div> 
-    <div  class= "form-group" > 
-      <label> Prix </label> 
-      <div  class= "input-group" > 
-        <input   [readonly]="!isAdminCurrentUser"  formControlName="prix" id= "prix"  class= "form-control" >
-      </div> 
-    </div> 
-    <div  class= "form-group" > 
-      <label> Marque </label> 
-      <div  class= "input-group" > 
-        <input  [readonly]="!isAdminCurrentUser"  formControlName="marque" id= "marque"  class= "form-control" >
-      </div> 
-    </div> 
-    <button class="mat-raised-button"
-            (click)="close()">
-        fermer
-    </button>
-
-    <button *ngIf="!this.articleForm.pristine" class="mat-raised-button mat-primary"
-            (click)="save()">
-        Valider
-    </button>
-  </form>
-  <!-- <mat-dialog-content [formGroup]="articleForm">
-
-    <mat-form-field>
-
-        <input matInput
-                placeholder="Nom"
-               formControlName="nom" 
-               [(ngModel)]="article.label"
-              >
-
-    </mat-form-field>
-  <br>
-
-    <mat-form-field>
-
-      <input matInput
-      placeholder="description"
-     formControlName="description">
-
-    </mat-form-field>
-    <br>
-
-    <mat-form-field>
-      <input matInput
-      placeholder="marque"
-     formControlName="marque">
-
-    </mat-form-field>
-    <br>
-
-    <mat-form-field>
-      <input matInput
-      placeholder="prix"
-     formControlName="prix">
-
-    </mat-form-field>
-
-
-</mat-dialog-content>
-
-<mat-dialog-actions>
-
-    
-
-</mat-dialog-actions> -->
+<div class="produit-form">
+    <span class="close" (click)="close()">&times;</span>
+    <form [formGroup]="articleForm">
+      <h2>Modifier le produit</h2>
+      <div>
+        <input [readonly]="!isAdminCurrentUser" formControlName="nom" id="name" class="form-control" placeholder="Nom">
+        <br>
+        <input [readonly]="true" formControlName="idCategorie" id="idCategorie" class="form-control" placeholder="Catégorie">
+        <br>
+        <input [readonly]="!isAdminCurrentUser" formControlName="description" id="dept" class="form-control" placeholder="Description">
+        <br>
+        <input [readonly]="!isAdminCurrentUser" formControlName="prix" id="prix" class="form-control" placeholder="Prix">
+        <br>
+        <input [readonly]="!isAdminCurrentUser" formControlName="marque" id="marque" class="form-control" placeholder="Marque">
+        <br>
+      </div>
+      <div>
+        <button class="submit" type="submit" *ngIf="!this.articleForm.pristine" class="mat-raised-button mat-primary" (click)="save()">
+          Valider
+        </button>
+      </div>
+    </form>
+  </div>
+  

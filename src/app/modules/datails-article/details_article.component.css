@@ -1,3 +1,70 @@
-.mat-form-field {
-    display: block;
+
+
+h2,
+p {
+    margin: 0 0 20px;
+    font-weight: 400;
+    color: #999;
 }
+
+span {
+    color: #666;
+    display: block;
+    padding: 0 0 5px;
+}
+
+form {
+    padding: 25px;
+    margin: 25px;
+  
+}
+
+input,
+textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #1c87c9;
+    outline: none;
+}
+
+.produit-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #1c87c9;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+  }
+
+button:hover {
+    background: #2371a0;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.submit {
+    background: none;
+    border-top: none;
+    outline: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: #087ae4 1px solid;
+    padding: 0 0 3px 0;
+    font-size: 16px;
+    cursor: pointer;
+}
+

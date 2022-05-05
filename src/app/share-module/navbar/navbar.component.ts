@@ -36,6 +36,7 @@ export class NavbarComponent implements OnInit {
   connect(){
     this.router.navigate(['/Connexion']);
   }
+  
   disconnect(){
     this.authenticationService.logout();
 

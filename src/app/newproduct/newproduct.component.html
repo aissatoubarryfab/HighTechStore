@@ -4,22 +4,19 @@
     <h2>Ajouter un nouveau production</h2>
     <div>
       <input [readonly]="!isAdminCurrentUser" formControlName="nom" id="name" class="form-control" placeholder="Nom">
-      <input [readonly]="true" formControlName="idCategorie" id="idCategorie" class="form-control"
-        placeholder="Catégorie">
-      <input [readonly]="!isAdminCurrentUser" formControlName="description" id="dept" class="form-control"
-        placeholder="Description">
+      <input [readonly]="true" formControlName="idCategorie" id="idCategorie" class="form-control" placeholder="Catégorie">
+      <input [readonly]="!isAdminCurrentUser" formControlName="description" id="dept" class="form-control" placeholder="Description">
       <input [readonly]="!isAdminCurrentUser" formControlName="prix" id="prix" class="form-control" placeholder="Prix">
-      <input [readonly]="!isAdminCurrentUser" formControlName="marque" id="marque" class="form-control"
-        placeholder="Marque">
-      <div>
-        <button class="mat-raised-button" type="submit" (click)="close()">
-          Annuler
-        </button>
-        <br><br>
-        <button type="submit" *ngIf="!this.articleForm.pristine" class="mat-raised-button mat-primary" (click)="save()">
-          Valider
-        </button>
-      </div>
+      <input [readonly]="!isAdminCurrentUser" formControlName="marque" id="marque" class="form-control" placeholder="Marque">
+    </div>
+    <div>
+      <button class="mat-raised-button" type="submit" (click)="close()">
+        Annuler
+      </button>
+      <br><br>
+      <button type="submit" *ngIf="!this.articleForm.pristine" class="mat-raised-button mat-primary" (click)="save()">
+        Valider
+      </button>
     </div>
   </form>
 </div>

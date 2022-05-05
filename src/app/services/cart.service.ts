@@ -34,6 +34,7 @@ export class CartService {
              idCategorie: item.idCategorie[0],  
              idUser: item.idUser[0],
              label: item.label[0],
+             quantity : item.quantity[0],
              marque: item.marque[0],
              price: item.price[0]
            });  
@@ -41,8 +42,7 @@ export class CartService {
          results = arr;
      });  
      return results;
-   }  
-  
+  }  
   addtoCart(idProduct : number,idUser : number)
   {
     return this.http.get(`http://localhost:8080/ici_war/rest/cart/add/${idProduct}/${idUser}`)
@@ -50,10 +50,11 @@ export class CartService {
   getTotalPrice(idUser: number) :Observable<number>{
     return this.http.get<number>(`http://localhost:8080/ici_war/rest/cart/totalPrice/${idUser}`);
   }
-  removeCartItem(idProduct : number):Observable<boolean>{
-    return this.http.get<boolean>(`http://localhost:8080/ici_war/rest/cart/delete/${idProduct}`);
+  removeCartItem(idProduct : number, idUser : number):Observable<boolean>{
+    return this.http.get<boolean>(`http://localhost:8080/ici_war/rest/cart/delete/${idProduct}/${idUser}`);
   }
   removeAllCart(idUser: number):Observable<boolean>{
-    return this.http.get<boolean>(`http://localhost:8080/ici_war/cart/rest/delete/${idUser}`);
+    return this.http.get<boolean>(`http://localhost:8080/ici_war/rest/cart/delete/${idUser}`);
   }
+
 }

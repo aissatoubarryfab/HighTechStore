@@ -37,6 +37,7 @@ export class CartComponent implements OnInit {
     });
     this.cartService.getTotalPrice(this.currentUser?.id[0])
     .subscribe(res=>{
+      console.log(res )
        this.grandTotal =  res;
     });
     this.totalProductInCart();
@@ -55,8 +56,9 @@ export class CartComponent implements OnInit {
       this.totalItem = res?.length;
      })
   }
-  removeItem(idProduit :number){
-    this.cartService.removeCartItem(idProduit)
+  removeItem(idProduit :number,idUser: number){
+    console.log(idUser)
+    this.cartService.removeCartItem(idProduit,idUser)
     .subscribe({
       next :(data)=>{
         this.getAllProductInCart();

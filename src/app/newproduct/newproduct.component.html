@@ -1,7 +1,7 @@
 <div class="articles-form">
-  <span class="close">&times;</span>
+  <span class="close" (click)="close()">&times;</span>
   <form [formGroup]="articleForm">
-    <h2>Ajouter un nouveau production</h2>
+    <h2>Ajouter un nouveau produit</h2>
     <div>
       <input [readonly]="!isAdminCurrentUser" formControlName="nom" id="name" class="form-control" placeholder="Nom">
       <input [readonly]="true" formControlName="idCategorie" id="idCategorie" class="form-control" placeholder="Catégorie">
@@ -10,10 +10,6 @@
       <input [readonly]="!isAdminCurrentUser" formControlName="marque" id="marque" class="form-control" placeholder="Marque">
     </div>
     <div>
-      <button class="mat-raised-button" type="submit" (click)="close()">
-        Annuler
-      </button>
-      <br><br>
       <button type="submit" *ngIf="!this.articleForm.pristine" class="mat-raised-button mat-primary" (click)="save()">
         Valider
       </button>

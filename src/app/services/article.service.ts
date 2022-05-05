@@ -89,12 +89,14 @@ export class ArticleService {
         let  arr = [];   
          for (const k in obj.ApplicationConstant) {  
            var item = obj.ApplicationConstant[k];  
-           arr.push({  
-             description: item.description[0],  
+           arr.push({            
+            description: item.description[0],  
              id: item.id[0],  
              idCategorie: item.idCategorie[0],  
              idUser: item.idUser[0],
-             label: item.label[0],
+             label: item.label[0], 
+             quantity : item.quantity[0],
+             photo : item.photo[0],
              marque: item.marque[0],
              price: item.price[0]
            });  

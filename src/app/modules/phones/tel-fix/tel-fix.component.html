@@ -7,9 +7,10 @@
 <div class="row" style="width: 90%;">
     <ng-container *ngFor="let item of articles ">
         <div class="card col-md-3" style="align-content: center;">
-            <img class= img src="{{item.image}}" alt="">
+            <img class= img src="{{item.photo}}" alt="">
                 <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.label}}</h5>
                 <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.description}}</p>
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;">{{item.quantity}}</p>
                 <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-size: medium;"><strong>Prix: </strong>{{item.price}}</p>
             
             <button class="btn btn-primary" (click)="addtocart(item)">Ajouter au panier</button>

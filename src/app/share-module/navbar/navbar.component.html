@@ -63,7 +63,7 @@
     </a>
   </div>
     <div>
-          <a (click)="disconnect()"><img style="width:40px; margin-right: 10%;" src="./assets/logout2.png"></a>
+          <a *ngIf="isConnected" (click)="disconnect()"><img style="width:40px; margin-right: 10%;" src="./assets/logout2.png"></a>
   </div>
   <a *ngIf="!isConnected" href="/Connexion"><img style="width:50px; margin-right: 10%;"
       src="./assets/images/home/userIcon.jpg"></a>

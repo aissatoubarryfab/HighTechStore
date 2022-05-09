@@ -54,7 +54,7 @@ export class CartService {
     return this.http.get<boolean>(`http://localhost:8080/ici_war/rest/cart/delete/${idProduct}/${idUser}`);
   }
   removeAllCart(idUser: number):Observable<boolean>{
-    return this.http.get<boolean>(`http://localhost:8080/ici_war/rest/cart/delete/${idUser}`);
+    return this.http.get<boolean>(`http://localhost:8080/ici_war/rest/cart/deleteAll/${idUser}`);
   }
 
 }

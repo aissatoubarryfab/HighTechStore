@@ -83,11 +83,12 @@ export class PcAccessoiresComponent implements OnInit {
   totalProductInCart(){
     this.cartService.getArticlesInCart(this.currentUser.id[0])
      .subscribe((res : any)=>{
-       this.totalItem = res?.length;
+       this.totalItem = res?.length;   
       })
   }
   addtocart(article : Article){
     this.cartService.addtoCart(article.id,this.currentUser.id[0]).subscribe(res=>{
+      this.loadArticles();
       this.totalProductInCart();
     });
   }

@@ -1,7 +1,7 @@
 export enum CategoryEnum{
-    PC_ACCESSOIRES = 1,
-    PC_BUREAU = 2,
-    PC_PORTABLE = 3,
+    PC_ACCESSOIRES = 2,
+    PC_BUREAU = 3,
+    PC_PORTABLE = 1,
     SMART_PHONE = 4,
     TEL_ACCESSOIRES = 5,
     TEL_FIX = 6,
